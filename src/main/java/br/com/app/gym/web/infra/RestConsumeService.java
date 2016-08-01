@@ -1,5 +1,6 @@
 package br.com.app.gym.web.infra;
 
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -14,9 +15,13 @@ import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 public class RestConsumeService {
 	
+    HttpClient client = new HttpClient(); 
+    
+    
 	public Object restGet(String classe, String metodo, String atributo){
         try {  
-            HttpClient client = new HttpClient(new MultiThreadedHttpConnectionManager());  
+
+ 
             client.getHttpConnectionManager().getParams().setConnectionTimeout(30000);  
            /* Executando chamada com método HTTP GET */  
         String getURI = "http://localhost:8080/mylocalgym/"+classe+"/"+metodo+"/"+atributo+"";  
