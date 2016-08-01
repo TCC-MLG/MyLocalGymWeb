@@ -1,12 +1,10 @@
 package br.com.app.gym.web.infra;
 
-import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
@@ -24,7 +22,7 @@ public class RestConsumeService {
  
             client.getHttpConnectionManager().getParams().setConnectionTimeout(30000);  
            /* Executando chamada com método HTTP GET */  
-        String getURI = "http://localhost:8080/mylocalgym/"+classe+"/"+metodo+"/"+atributo+"";  
+        String getURI = "http://localhost:8080/mylocalgymweb/"+classe+"/"+metodo+"/"+atributo+"";  
         GetMethod get = new GetMethod(getURI);   
         int statusCodeGET = client.executeMethod(get);  
         String responseBody = get.getResponseBodyAsString();  

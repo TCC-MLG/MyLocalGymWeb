@@ -1,36 +1,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
- <html xmlns="http://www.w3.org/1999/xhtml" 
- 	   xmlns:ui="http://java.sun.com/jsf/facelets"
- 	   xmlns:f="http://java.sun.com/jsf/core" 
- 	   xmlns:h="http://java.sun.com/jsf/html"
- 	   xmlns:p="http://primefaces.org/ui"> 
- 	 
-	<h:head> 
-		<title>Hello JSF!</title> 
-	</h:head> 
-	
-	<h:body>
-	
-	<h:form>
-		<p:panel>
-			<p:panelGrid columns="2">
-			<f:facet name="header">
-	        	<p:outputLabel value="Olá!!" />
-	    	</f:facet>	
-			
-			<p:outputLabel id="txt" value="Digite Seu nome:"/>
-			<p:inputText value="#{hello.pessoa.nomePessoa}"/>
-			
-			<p:outputLabel value="Digite Seu Sobrenome"/>
-			<p:inputText  value="#{hello.pessoa.sobrenomePessoa}"/>	
-			
-			<p:commandButton value="Gravar!" action="#{hello.cadastrarPessoa}" />
-			
-			 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-			
-			</p:panelGrid>
-		</p:panel>
-	</h:form>
-	
-	</h:body> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template_initial.xhtml">
+	<ui:define name="nav_bar">
+		<ui:include src="/template/top_bar.xhtml" />
+		<ui:include src="/template/search_bar.xhtml" />
+	</ui:define>
+
+	<ui:define name="container">
+		<h:form>
+			<p:panel>
+				<p:panelGrid columns="2">
+					<f:facet name="header">
+						<p:outputLabel value="Olá!!" />
+					</f:facet>
+
+					<p:outputLabel id="txt" value="Digite Seu nome:" />
+					<p:inputText value="#{hello.pessoa.nomePessoa}" />
+
+					<p:outputLabel value="Digite Seu Sobrenome" />
+					<p:inputText value="#{hello.pessoa.sobrenomePessoa}" />
+
+					<p:commandButton value="Gravar!" action="#{hello.cadastrarPessoa}" />
+
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
+
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+	<ui:define name="title">        
+            Bem-vindo ao MyImage.com        
+    </ui:define>
+</ui:composition>
 </html>
