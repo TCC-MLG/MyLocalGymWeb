@@ -15,7 +15,29 @@
     </ui:define>
 
 	<ui:define name="container">
+		<p:panel>
+			<p:panelGrid columns="2">
+				<f:facet name="header">
+					<p:outputLabel value="Entrar" />
+				</f:facet>
 
+				<p:outputLabel id="txt" value="Login" />
+				<p:inputText value="#{hello.pessoa.nomePessoa}" />
+
+
+				<p:outputLabel value="Senha" />
+				<p:password value="#{hello.pessoa.sobrenomePessoa}" />
+
+			</p:panelGrid>
+			<p:panelGrid >
+
+				<p:commandButton value="Entrar" action="#{hello.cadastrarPessoa}" />
+
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+
+			</p:panelGrid>
+		</p:panel>
 	</ui:define>
 
 </ui:composition>
