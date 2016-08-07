@@ -6,36 +6,36 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/template_initial.xhtml">
+	
 	<ui:define name="nav_bar">
 		<ui:include src="/template/top_bar.xhtml" />
 		<ui:include src="/template/search_bar.xhtml" />
 	</ui:define>
 
+	<ui:define name="title">        
+            Bem-vindo ao My Local Gym.       
+    </ui:define>
+
 	<ui:define name="container">
-		<h:form>
-			<p:panel>
+		<h:form style="width: 500px; height: 400px; margin: auto;">
+			<div>
 				<p:panelGrid columns="2">
+
 					<f:facet name="header">
-						<p:outputLabel value="Olá!!" />
+						<p:outputLabel value="Login" />
 					</f:facet>
 
-					<p:outputLabel id="txt" value="Digite Seu nome:" />
-					<p:inputText value="#{hello.pessoa.nomePessoa}" />
+					<p:outputLabel value="Usuário:" />
+					<p:inputText />
 
-					<p:outputLabel value="Digite Seu Sobrenome" />
-					<p:inputText value="#{hello.pessoa.sobrenomePessoa}" />
+					<p:outputLabel value="Senha:" />
+					<p:password />
 
-					<p:commandButton value="Gravar!" action="#{hello.cadastrarPessoa}" />
-
-					<p:messages id="messages" showDetail="true" autoUpdate="true"
-						closable="true" />
+					<p:commandButton value="Entrar" />
 
 				</p:panelGrid>
-			</p:panel>
+			</div>
 		</h:form>
 	</ui:define>
-	<ui:define name="title">        
-            Bem-vindo ao MyImage.com        
-    </ui:define>
 </ui:composition>
 </html>
