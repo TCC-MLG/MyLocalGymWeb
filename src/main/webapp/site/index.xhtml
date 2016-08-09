@@ -26,12 +26,12 @@
 					</f:facet>
 
 					<p:outputLabel value="Usuário:" />
-					<p:inputText />
+					<p:inputText value="#{loginController.login.usuario}"/>
 
 					<p:outputLabel value="Senha:" />
-					<p:password />
+					<p:password value="#{loginController.login.senha}"/>
 
-					<p:commandButton value="Entrar" />
+					<p:commandButton value="Entrar" action="#{loginController.entrar()}" />
 
 				</p:panelGrid>
 			</div>
