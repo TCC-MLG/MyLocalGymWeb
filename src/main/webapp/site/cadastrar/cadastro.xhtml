@@ -17,22 +17,21 @@
 			<p:fieldset legend="Dados Cadastrais">
 				<h:panelGrid columns="2">
 					<p:outputLabel value="Razão Social" />
-					<p:inputText
-						value="#{cadastrarController.pessoa.razaoSocial}" />
+					<p:inputText value="#{cadastrarController.pessoa.razaoSocial}" />
 					<p:outputLabel value="CNPJ" />
 					<p:inputText value="#{cadastrarController.pessoa.cnpj}" />
 					<p:outputLabel value="E-Mail" />
 					<p:inputText value="#{cadastrarController.pessoa.email}" />
 					<p:outputLabel value="Telefone" />
 					<p:inputText value="#{cadastrarController.pessoa.telefone}" />
+					<p:outputLabel value="CEP" />
+					<p:inputText />
 					<p:outputLabel value="Logradouro " />
-					<p:inputText
-						value="#{cadastrarController.pessoa.logradouro}" />
+					<p:inputText value="#{cadastrarController.pessoa.logradouro}" />
 					<p:outputLabel value="Número " />
 					<p:inputText value="#{cadastrarController.pessoa.numero}" />
 					<p:outputLabel value="Complemento " />
-					<p:inputText
-						value="#{cadastrarController.pessoa.complemento}" />
+					<p:inputText value="#{cadastrarController.pessoa.complemento}" />
 					<p:outputLabel value="Cidade" />
 					<p:inputText value="#{cadastrarController.pessoa.cidade}" />
 					<p:outputLabel value="Estado" />
@@ -44,8 +43,7 @@
 					<p:outputLabel value="CNPJ" />
 					<p:inputText value="#{cadastrarController.pessoa.cnpj}" />
 					<p:outputLabel value="Senha" />
-					<p:password id="senha1"
-						value="#{cadastrarController.pessoa.senha}"
+					<p:password id="senha1" value="#{cadastrarController.pessoa.senha}"
 						validatorMessage="Senhas Diferentes" weakLabel="Fraca"
 						strongLabel="Forte" goodLabel="Boa" match="senha2" feedback="true"
 						promptLabel="Insira Uma Senha" />
@@ -53,8 +51,7 @@
 					<p:password id="senha2" />
 				</h:panelGrid>
 			</p:fieldset>
-			<p:commandButton icon="ui-icon-check" value="Salvar"
-				 />
+			<p:commandButton icon="ui-icon-check" value="Salvar" />
 		</h:form>
 	</ui:define>
 	<ui:define name="title">        
