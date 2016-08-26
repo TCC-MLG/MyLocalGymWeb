@@ -24,13 +24,13 @@ public class LoginController {
 	public void init() {
 
 		this.login = new Login();
-		this.message = new Message();
+		this.setMessage(new Message());
 
 	}
 	
 	public void entrar(){
 		
-		this.message = service.efetuarLogin(login);
+		this.setMessage(service.efetuarLogin(login));
 		
 	}
 	
@@ -41,6 +41,14 @@ public class LoginController {
 
 	public void setLogin(Login login) {
 		this.login = login;
+	}
+
+	public Message getMessage() {
+		return message;
+	}
+
+	public void setMessage(Message message) {
+		this.message = message;
 	}
 
 }

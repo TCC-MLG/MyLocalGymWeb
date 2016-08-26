@@ -10,9 +10,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class buscaCEP {
+public class BuscaCEP {
 
-	public static String getEndereco(String CEP) throws IOException {
+	public String getEndereco(String CEP) throws IOException {
 
 		// ***************************************************
 		try {
