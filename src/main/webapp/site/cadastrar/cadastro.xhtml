@@ -13,70 +13,93 @@
 
 	<ui:define name="container">
 		<body>
+			<h2>Cadastro de Parceiros</h2>
+			<hr />
+
 			<h:form>
-				<p:messages id="menssagen" autoUpdate="true" />
 				<p:fieldset legend="Dados Cadastrais">
-					<h:panelGrid columns="2">
-						<p:outputLabel value="Razão Social" />
-						<p:inputText
-							value="#{pessoaJuridicaController.pessoa.razaoSocial}"
-							required="true" />
-						<p:outputLabel value="CNPJ" />
-						<p:inputText value="#{pessoaJuridicaController.pessoa.cnpj}"
-							required="true" maxlength="14" size="20" />
-						<p:outputLabel value="E-Mail" />
-						<p:inputText value="#{pessoaJuridicaController.pessoa.email}"
-							required="true" />
-						<p:outputLabel value="Telefone" />
-						<p:inputText value="#{pessoaJuridicaController.pessoa.telefone}"
-							required="true" />
-					</h:panelGrid>
-					<h:panelGrid columns="3">
-						<p:outputLabel value="CEP" />
-						<p:inputText value="#{pessoaJuridicaController.pessoa.cep}"
-							required="true" />
+					<p>
+						<h:outputLabel value="Razão Social: " for="razaoSocial" />
+						<h:inputText id="razaoSocial" required="true"
+							value="#{pessoaJuridicaController.pessoa.razaoSocial}" size="50" />
+						&nbsp;&nbsp;
+						<h:outputLabel value="CNPJ: " for="cnpj" />
+						<h:inputText id="cnpj" required="true"
+							value="#{pessoaJuridicaController.pessoa.cnpj}" maxlength="14"
+							size="30" />
+						&nbsp;&nbsp;
+					</p>
+					<p>
+						<h:outputLabel value="CEP: " for="cep" />
+						<h:inputText id="cep" required="true"
+							value="#{pessoaJuridicaController.pessoa.cep}" maxlength="8"
+							size="8" />
 						<p:commandButton value="Buscar"
 							action="#{pessoaJuridicaController.buscaCep}" />
-					</h:panelGrid>
-					<h:panelGrid columns="2">
-						<p:outputLabel value="Logradouro " />
-						<p:inputText value="#{pessoaJuridicaController.pessoa.logradouro}"
-							required="true" />
-						<p:outputLabel value="Número " />
-						<p:inputText value="#{pessoaJuridicaController.pessoa.numero}"
-							required="true" />
-						<p:outputLabel value="Complemento " />
-						<p:inputText
-							value="#{pessoaJuridicaController.pessoa.complemento}" />
-						<p:outputLabel value="Cidade" />
-						<p:inputText value="#{pessoaJuridicaController.pessoa.cidade}" />
-						<p:outputLabel value="Bairro" />
-						<p:inputText />
-						<p:outputLabel value="Estado" />
-						<p:inputText  required="true"/>
-
-					</h:panelGrid>
+					</p>
+					<p>
+						<h:outputLabel value="Endereço: " for="endereco" />
+						<h:inputText id="endereco" required="true"
+							value="#{pessoaJuridicaController.pessoa.logradouro}" size="40" />
+						&nbsp;&nbsp;
+						<h:outputLabel value="Nº: " for="numero" />
+						<h:inputText id="numero" maxlength="6" required="true"
+							value="#{pessoaJuridicaController.pessoa.numero}" size="5" />
+						&nbsp;&nbsp;
+						<h:outputLabel value="Complemento: " for="complemento" />
+						<h:inputText id="complemento" maxlength="30" required="true"
+							value="#{pessoaJuridicaController.pessoa.complemento}" size="20" />
+					</p>
+					<p>
+						<h:outputLabel value="Bairro: " for="bairro" />
+						<h:inputText id="bairro" required="true"
+							value="#{pessoaJuridicaController.pessoa.bairro}" size="40" />
+						&nbsp;&nbsp;
+						<h:outputLabel for="cidade" value="Cidade: " />
+						<h:inputText id="cidade" required="true"
+							value="#{pessoaJuridicaController.pessoa.cidade}" size="30" />
+						&nbsp;&nbsp;
+						<h:outputLabel value="Estado: " for="estado" />
+						<h:inputText id="estado" required="true"
+							value="#{pessoaJuridicaController.pessoa.estado}" size="20" />
+					</p>
+					<p>
+						<h:outputLabel value="E-mail: " for="email" />
+						<h:inputText id="email" required="true"
+							value="#{pessoaJuridicaController.pessoa.email}" size="40" />
+						&nbsp;&nbsp;
+						<h:outputLabel value="Telefone: " for="telefone" />
+						<h:inputText id="telefone" required="true"
+							value="#{pessoaJuridicaController.pessoa.telefone}" size="11" />
+						&nbsp;&nbsp;
+					</p>
 				</p:fieldset>
 				<p:fieldset legend="Dados de Acesso">
-					<h:panelGrid columns="2">
-						<p:outputLabel value="CNPJ" />
-						<p:inputText required="true"
+					<p>
+						<p:outputLabel value="CNPJ :" />
+						<p:inputText required="true" maxlength="14"
 							value="#{cadastrarController.pessoa.cnpj}" />
-						<p:outputLabel value="Senha" />
+					</p>
+
+					<p>
+						<p:outputLabel value="Senha :" />
 						<p:password id="senha1"
 							value="#{cadastrarController.pessoa.senha}"
 							validatorMessage="Senhas Diferentes" weakLabel="Fraca"
 							strongLabel="Forte" goodLabel="Boa" match="senha2"
 							feedback="true" promptLabel="Insira Uma Senha" required="true" />
-						<p:outputLabel value="Repetir Senha" />
-						<p:password id="senha2" required="true" />
-					</h:panelGrid>
+					</p>
+					<p:outputLabel value="Repetir Senha :" />
+					<p:password id="senha2" required="true" />
+					<p>
+						<p:commandButton value="Salvar"
+							action="#{pessoaJuridicaController.pessoa}" />
+						&nbsp;
+						<p:commandButton value="cancelar" />
+					</p>
 				</p:fieldset>
-				<p:commandButton icon="ui-icon-check" value="Salvar"
-					action="#{cadastrarController.cadastrarPessoaJuridica}" />
 			</h:form>
 		</body>
-
 	</ui:define>
 	<ui:define name="title">        
             Bem-vindo ao MyImage.com        
