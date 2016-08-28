@@ -14,18 +14,26 @@ import br.com.app.gym.web.service.ClienteService;
 @Model
 @RequestScoped
 public class PessoaJuridicaController {
-	private PessoaJuridica pessoaJuridica;
+	public PessoaJuridica getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(PessoaJuridica pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	private PessoaJuridica pessoa;
 
 	@Inject
 	private ClienteService service;
 
 	@PostConstruct
 	public void init() {
-		this.pessoaJuridica = new PessoaJuridica();
+		this.pessoa = new PessoaJuridica();
 	}
 
 	public void buscaCep() throws IOException {
-		String CEP = pessoaJuridica.getCep();
+		String CEP = pessoa.getCep();
 		BuscaCEP busca = new BuscaCEP();
 		String rua = busca.getEndereco(CEP);
 		String bairro = busca.getBairro(CEP);

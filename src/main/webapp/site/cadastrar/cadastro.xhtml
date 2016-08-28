@@ -18,33 +18,43 @@
 				<p:fieldset legend="Dados Cadastrais">
 					<h:panelGrid columns="2">
 						<p:outputLabel value="Razão Social" />
-						<p:inputText required="true" />
+						<p:inputText
+							value="#{pessoaJuridicaController.pessoa.razaoSocial}"
+							required="true" />
 						<p:outputLabel value="CNPJ" />
-						<p:inputText required="true" />
+						<p:inputText value="#{pessoaJuridicaController.pessoa.cnpj}"
+							required="true" maxlength="14" size="20" />
 						<p:outputLabel value="E-Mail" />
-						<p:inputText required="true" />
+						<p:inputText value="#{pessoaJuridicaController.pessoa.email}"
+							required="true" />
 						<p:outputLabel value="Telefone" />
-						<p:inputText required="true" />
+						<p:inputText value="#{pessoaJuridicaController.pessoa.telefone}"
+							required="true" />
 					</h:panelGrid>
 					<h:panelGrid columns="3">
 						<p:outputLabel value="CEP" />
-						<p:inputText required="true" />
+						<p:inputText value="#{pessoaJuridicaController.pessoa.cep}"
+							required="true" />
 						<p:commandButton value="Buscar"
 							action="#{pessoaJuridicaController.buscaCep}" />
 					</h:panelGrid>
 					<h:panelGrid columns="2">
 						<p:outputLabel value="Logradouro " />
-						<p:inputText required="true" />
+						<p:inputText value="#{pessoaJuridicaController.pessoa.logradouro}"
+							required="true" />
 						<p:outputLabel value="Número " />
-						<p:inputText required="true" />
+						<p:inputText value="#{pessoaJuridicaController.pessoa.numero}"
+							required="true" />
 						<p:outputLabel value="Complemento " />
-						<p:inputText />
+						<p:inputText
+							value="#{pessoaJuridicaController.pessoa.complemento}" />
 						<p:outputLabel value="Cidade" />
-						<p:inputText />
+						<p:inputText value="#{pessoaJuridicaController.pessoa.cidade}" />
 						<p:outputLabel value="Bairro" />
 						<p:inputText />
 						<p:outputLabel value="Estado" />
-						<p:inputText />
+						<p:inputText  required="true"/>
+
 					</h:panelGrid>
 				</p:fieldset>
 				<p:fieldset legend="Dados de Acesso">
