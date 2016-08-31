@@ -3,16 +3,16 @@ package br.com.app.gym.web.controllers;
 import java.io.IOException;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
-import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.app.gym.web.model.BuscaCEP;
 import br.com.app.gym.web.model.PessoaJuridica;
 import br.com.app.gym.web.service.ClienteService;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-@Model
 @RequestScoped
+@Named("pessoaJuridicaController")
 public class PessoaJuridicaController {
 
     public PessoaJuridica getPessoa() {
@@ -42,11 +42,11 @@ public class PessoaJuridicaController {
         String estado = busca.getUF(CEP);
 
     }
-    
-    public void cadastrar(){
-        
+
+    public void cadastrar() {
+
         this.service.cadastrarCliente(this.pessoa);
-        
+
     }
 
     public ClienteService getService() {
