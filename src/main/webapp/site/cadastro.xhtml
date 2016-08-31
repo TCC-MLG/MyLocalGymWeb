@@ -41,11 +41,11 @@
                         </p>
                         <p>
                             <p:outputLabel value="Endereço " for="endereco" />
-                            <p:inputText required="true" id="endereco"
+                            <p:inputText required="false" id="endereco"
                                          value="#{pessoaJuridicaController.pessoa.logradouro}" size="40" />
                             &nbsp;&nbsp;
                             <p:outputLabel value="Nº " for="numero" />
-                            <p:inputText required="true" id="numero" maxlength="6"
+                            <p:inputText required="false" id="numero" maxlength="6"
                                          value="#{pessoaJuridicaController.pessoa.numero}" size="5" />
                             &nbsp;&nbsp;
                             <p:outputLabel value="Complemento " for="complemento" />
@@ -54,24 +54,24 @@
                         </p>
                         <p>
                             <p:outputLabel value="Bairro " for="bairro" />
-                            <p:inputText required="true" id="bairro"
+                            <p:inputText required="false" id="bairro"
                                          value="#{pessoaJuridicaController.pessoa.bairro}" size="40" />
                             &nbsp;&nbsp;
                             <p:outputLabel for="cidade" value="Cidade " />
-                            <p:inputText required="true" id="cidade"
+                            <p:inputText required="false" id="cidade"
                                          value="#{pessoaJuridicaController.pessoa.cidade}" size="30" />
                             &nbsp;&nbsp;
                             <p:outputLabel value="Estado " for="estado" />
-                            <p:inputText required="true" id="estado"
+                            <p:inputText required="false" id="estado"
                                          value="#{pessoaJuridicaController.pessoa.estado}" size="20" />
                         </p>
                         <p>
                             <p:outputLabel value="E-mail " for="email" />
-                            <p:inputText id="email" required="true"
+                            <p:inputText id="email" required="false"
                                          value="#{pessoaJuridicaController.pessoa.email}" size="40" />
                             &nbsp;&nbsp;
                             <p:outputLabel value="Telefone " for="telefone" />
-                            <p:inputText id="telefone" required="true"
+                            <p:inputText id="telefone" required="false"
                                          value="#{pessoaJuridicaController.pessoa.telefone}" size="11" />
                             &nbsp;&nbsp;
                         </p>
@@ -80,20 +80,20 @@
                         <p>
                             <p:outputLabel value="CNPJ " />
                             <p:inputText required="true" maxlength="14"
-                                         value="#{cadastrarController.pessoa.cnpj}" />
+                                         value="#{pessoaJuridicaController.pessoa.cnpj}" />
                         </p>
 
                         <p>
                             <p:outputLabel value="Senha " />
                             <p:password id="senha1" maxlength="8"
-                                        value="#{cadastrarController.pessoa.senha}" required="true"
+                                        value="#{pessoaJuridicaController.pessoa.senha}" required="true"
                                         validatorMessage="Senhas Diferentes" />
                         </p>
                         <p:outputLabel value="Repetir Senha " />
                         <p:password id="senha2" required="true" maxlength="8" />
                         <p>
                             <p:commandButton value="Salvar"
-                                             action="#{pessoaJuridicaController.pessoa}" />
+                                             action="#{pessoaJuridicaController.cadastrar()}" />
                             &nbsp;
                             <p:commandButton value="cancelar" />
                         </p>
