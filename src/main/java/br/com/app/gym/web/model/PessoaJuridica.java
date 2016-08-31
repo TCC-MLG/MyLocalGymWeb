@@ -1,11 +1,13 @@
 package br.com.app.gym.web.model;
 
-public class PessoaJuridica  {
+public class PessoaJuridica {
 	private String razaoSocial;
 	private String cnpj;
 	private String email;
+	private String cep;
 	private String telefone;
 	private String cidade;
+	private String bairro;
 	private String estado;
 	private String logradouro;
 	private String senha;
@@ -68,6 +70,14 @@ public class PessoaJuridica  {
 		this.cidade = cidade;
 	}
 
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
 	public String getEstado() {
 		return estado;
 	}
@@ -90,6 +100,14 @@ public class PessoaJuridica  {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 }

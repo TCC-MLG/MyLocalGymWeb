@@ -1,46 +1,42 @@
 package br.com.app.gym.web.controllers;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.app.gym.web.model.Login;
 import br.com.app.gym.web.service.LoginService;
-import br.com.gym.mylocalgym.messages.Message;
+import java.io.Serializable;
+import javax.inject.Named;
 
-@Model
 @RequestScoped
-public class LoginController {
+@Named("loginController")
+public class LoginController implements Serializable {
 
-	private Login login;
-	
-	@Inject
-	private LoginService service;
-	
-	private Message message;
+    private Login login;
 
-	@PostConstruct
-	public void init() {
+    @Inject
+    private LoginService service;
 
-		this.login = new Login();
-		this.message = new Message();
+    @PostConstruct
+    public void init() {
 
-	}
-	
-	public void entrar(){
-		
-		this.message = service.efetuarLogin(login);
-		
-	}
-	
+        this.login = new Login();
 
-	public Login getLogin() {
-		return login;
-	}
+    }
 
-	public void setLogin(Login login) {
-		this.login = login;
-	}
+    public void entrar() {
+
+        this.service.efetuarLogin(this.login);
+
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
 }

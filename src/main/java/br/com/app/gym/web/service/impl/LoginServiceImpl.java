@@ -6,22 +6,35 @@ import javax.ws.rs.core.Response;
 
 import br.com.app.gym.web.model.Login;
 import br.com.app.gym.web.service.LoginService;
-import br.com.gym.mylocalgym.messages.Message;
+import java.text.MessageFormat;
+import javax.ws.rs.ClientErrorException;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 public class LoginServiceImpl implements LoginService {
 
-	Client client = ClientBuilder.newClient();
+    private WebTarget webTarget;
+    private Client client;
+    private static final String BASE_URI = "http://localhost:8080/mylocalgym//resources";
 
-	@Override
-	public Message efetuarLogin(Login login) {
+    public LoginServiceImpl() {
+        client = ClientBuilder.newClient();
+        webTarget = client.target(BASE_URI).path("login");
+    }
 
-		Response response = this.client
-				.target("http://localhost:8080/mylocalgymservices/login/logar/"+login.getUsuario()+"/"+login.getSenha())
-				.request().get();
-		
-		Message message = (Message) response.getEntity();
+    @Override
+    public boolean efetuarLogin(Login login) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        
+        resource = resource.path(MessageFormat.format("autenticar/{0}/{1}", new Object[]{login.getUsuario(), login.getSenha()}));
 
-		return null;
-	}
+        Response response = resource.request(MediaType.APPLICATION_JSON).get();
+
+        return false;
+    }
+
+    public void close() {
+        client.close();
+    }
 
 }
