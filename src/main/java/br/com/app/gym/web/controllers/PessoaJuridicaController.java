@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import br.com.app.gym.web.model.BuscaCEP;
+import br.com.app.gym.web.utils.BuscaCEP;
 import br.com.app.gym.web.model.PessoaJuridica;
 import br.com.app.gym.web.service.ClienteService;
 import javax.enterprise.context.RequestScoped;
