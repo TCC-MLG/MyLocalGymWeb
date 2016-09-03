@@ -40,6 +40,11 @@ public class PessoaJuridicaController {
         String bairro = busca.getBairro(CEP);
         String cidade = busca.getCidade(CEP);
         String estado = busca.getUF(CEP);
+        
+        this.pessoa.setLogradouro(rua);
+        this.pessoa.setBairro(bairro);
+        this.pessoa.setCidade(cidade);
+        this.pessoa.setEstado(estado);
 
     }
 
