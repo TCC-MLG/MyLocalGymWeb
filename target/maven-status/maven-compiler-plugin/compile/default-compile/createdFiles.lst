@@ -2,10 +2,10 @@ br\com\app\gym\web\model\BuscaCEP.class
 br\com\app\gym\web\utils\GenerateValidation.class
 br\com\app\gym\web\utils\enums\GenerateValidation.class
 br\com\app\gym\web\model\Login.class
+br\com\gym\mylocalgym\presenters\LoginAcademiaPresenter.class
 br\com\app\gym\web\model\Academia.class
 br\com\app\gym\web\controllers\PessoaJuridicaController.class
 br\com\app\gym\web\model\PessoaJuridica.class
-br\com\app\gym\web\service\impl\NovoJerseyClient.class
 br\com\app\gym\web\service\impl\LoginServiceImpl.class
 br\com\app\gym\web\service\ClienteService.class
 br\com\app\gym\web\utils\ConfirmPasswordValidator.class

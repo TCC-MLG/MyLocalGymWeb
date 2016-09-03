@@ -1,5 +1,6 @@
 package br.com.app.gym.web.controllers;
 
+import br.com.app.gym.web.model.Academia;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -27,7 +28,17 @@ public class LoginController implements Serializable {
 
     public void entrar() {
 
-        this.service.efetuarLogin(this.login);
+       Academia academia = this.service.efetuarLogin(this.login);
+       
+        if (academia.getId() != null) {
+            
+            System.out.println("PULAR PARA O SISTEMA");
+            
+        }else{
+            
+            System.err.println("mensagem de erro.");
+            
+        }
 
     }
 

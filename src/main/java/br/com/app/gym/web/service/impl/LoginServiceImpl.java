@@ -6,6 +6,7 @@ import javax.ws.rs.client.ClientBuilder;
 
 import br.com.app.gym.web.model.Login;
 import br.com.app.gym.web.service.LoginService;
+import br.com.gym.mylocalgym.presenters.LoginAcademiaPresenter;
 import java.text.MessageFormat;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.WebTarget;
@@ -24,14 +25,14 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public boolean efetuarLogin(Login login) throws ClientErrorException {
+    public Academia efetuarLogin(Login login) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(MessageFormat.format("academia/{0}/{1}", new Object[]{login.getUsuario(), login.getSenha()}));
         Response response = resource.request(MediaType.APPLICATION_JSON).get();
         
-        Academia academia = response.readEntity(Academia.class);
+        LoginAcademiaPresenter academia = response.readEntity(LoginAcademiaPresenter.class);
         
-        return false;
+        return academia.convert();
     }
 
     public void close() {
