@@ -50,8 +50,10 @@ public class PessoaJuridicaController {
 
     public void cadastrar() {
 
-        this.service.cadastrarCliente(this.pessoa);
+     boolean cadastrado = this.service.cadastrarCliente(this.pessoa);
 
+        System.out.println("");
+     
     }
 
     public ClienteService getService() {

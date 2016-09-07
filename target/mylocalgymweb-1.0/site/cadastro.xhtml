@@ -37,7 +37,7 @@
                                          value="#{pessoaJuridicaController.pessoa.cep}" maxlength="8"
                                          size="8" />
                             <p:commandButton value="Buscar"
-                                             action="#{pessoaJuridicaController.buscaCep}" update="form_cadastro" />
+                                             action="#{pessoaJuridicaController.buscaCep}" update="form_cadastro, form_dados" />
                         </p>
                         <p>
                             <p:outputLabel value="Endereço " for="endereco" />
@@ -76,13 +76,10 @@
                             &nbsp;&nbsp;
                         </p>
                     </p:fieldset>
-                    <p:fieldset legend="Dados de Acesso">
-                        <p>
-                            <p:outputLabel value="CNPJ " />
-                            <p:inputText required="true" maxlength="14"
-                                         value="#{pessoaJuridicaController.pessoa.cnpj}" />
-                        </p>
+                </h:form>
+                <h:form id="form_dados">
 
+                    <p:fieldset legend="Dados de Acesso">
                         <p>
                             <p:outputLabel value="Senha " />
                             <p:password id="senha1" maxlength="8"
