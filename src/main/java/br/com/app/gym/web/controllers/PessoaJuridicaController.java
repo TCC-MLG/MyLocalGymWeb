@@ -8,11 +8,11 @@ import br.com.app.gym.web.utils.BuscaCEP;
 import br.com.app.gym.web.model.PessoaJuridica;
 import br.com.app.gym.web.service.ClienteService;
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@SessionScoped
+@ViewScoped
 @Named("pessoaJuridicaController")
 public class PessoaJuridicaController implements Serializable {
 
@@ -41,11 +41,15 @@ public class PessoaJuridicaController implements Serializable {
 
     }
 
-    public void cadastrar() {
+    public String cadastrar() {
 
+        
         boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
 
+        
         System.out.println("");
+        
+        return "inicio";
 
     }
 
