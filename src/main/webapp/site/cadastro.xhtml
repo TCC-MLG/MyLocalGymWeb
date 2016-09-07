@@ -98,13 +98,18 @@
                             <p:password id="senha2" required="false" maxlength="8" />
 
                             <p:commandButton value="Salvar"
-                                             actionListener="#{pessoaJuridicaController.cadastrar()}" />
+                                             actionListener="#{pessoaJuridicaController.cadastrar()}" oncomplete="PF('dlg1').show();" />
 
                             <p:commandButton value="cancelar" />
 
 
                         </p:panelGrid>
                     </p:fieldset>
+
+                    <p:dialog id="ola" header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+                        <h:outputText value="Resistance to PrimeFaces is futile!" />
+                    </p:dialog>
+
                 </h:form>
 
                 &nbsp;&nbsp;
