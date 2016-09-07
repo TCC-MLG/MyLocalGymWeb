@@ -1,8 +1,10 @@
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\BuscaCEP.java
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\ConfirmPasswordValidator.java
+C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\AcademiaRest.java
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\ClienteService.java
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\impl\LoginServiceImpl.java
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\Login.java
+C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\impl\AcademiaRestImpl.java
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\ManipulateDate.java
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\PessoaJuridica.java
 C:\Users\Matheus\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\LoginRest.java

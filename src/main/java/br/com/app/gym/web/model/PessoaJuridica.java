@@ -1,11 +1,12 @@
 package br.com.app.gym.web.model;
 
 import br.com.app.gym.web.parameter.AcademiaParameter;
+import java.io.Serializable;
 
-public class PessoaJuridica {
+public class PessoaJuridica implements Serializable{
     
     private String razaoSocial;
-    private String cnpj;
+    private Integer cnpj;
     private String email;
     private String cep;
     private String telefone;
@@ -21,7 +22,7 @@ public class PessoaJuridica {
         
         AcademiaParameter ap = new AcademiaParameter();
         
-        ap.setCnpj(new Integer(this.cnpj));
+        ap.setCnpj(this.cnpj);
         ap.setSenha(this.senha);
         ap.setCidade(this.cidade);
         ap.setEmail(this.email);
@@ -57,11 +58,11 @@ public class PessoaJuridica {
         this.razaoSocial = razaoSocial;
     }
     
-    public String getCnpj() {
+    public Integer getCnpj() {
         return cnpj;
     }
     
-    public void setCnpj(String cnpj) {
+    public void setCnpj(Integer cnpj) {
         this.cnpj = cnpj;
     }
     

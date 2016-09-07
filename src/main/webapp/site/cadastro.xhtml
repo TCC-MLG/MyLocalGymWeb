@@ -37,7 +37,7 @@
                                          value="#{pessoaJuridicaController.pessoa.cep}" maxlength="8"
                                          size="8" />
                             <p:commandButton value="Buscar"
-                                             action="#{pessoaJuridicaController.buscaCep}" update="form_cadastro, form_dados" />
+                                             action="#{pessoaJuridicaController.buscaCep}" update="form_cadastro" />
                         </p>
                         <p>
                             <p:outputLabel value="Endereço " for="endereco" />
@@ -78,7 +78,6 @@
                     </p:fieldset>
                 </h:form>
                 <h:form id="form_dados">
-
                     <p:fieldset legend="Dados de Acesso">
                         <p>
                             <p:outputLabel value="Senha " />
@@ -90,7 +89,7 @@
                         <p:password id="senha2" required="true" maxlength="8" />
                         <p>
                             <p:commandButton value="Salvar"
-                                             action="#{pessoaJuridicaController.cadastrar()}" />
+                                             actionListener="#{pessoaJuridicaController.cadastrar()}" />
                             &nbsp;
                             <p:commandButton value="cancelar" />
                         </p>

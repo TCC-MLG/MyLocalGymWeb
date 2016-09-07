@@ -3,30 +3,23 @@ package br.com.app.gym.web.controllers;
 import java.io.IOException;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
 import br.com.app.gym.web.utils.BuscaCEP;
 import br.com.app.gym.web.model.PessoaJuridica;
 import br.com.app.gym.web.service.ClienteService;
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-@RequestScoped
+@SessionScoped
 @Named("pessoaJuridicaController")
-public class PessoaJuridicaController {
-
-    public PessoaJuridica getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(PessoaJuridica pessoa) {
-        this.pessoa = pessoa;
-    }
+public class PessoaJuridicaController implements Serializable {
 
     private PessoaJuridica pessoa;
 
     @Inject
-    private ClienteService service;
+    private ClienteService clienteService;
 
     @PostConstruct
     public void init() {
@@ -40,7 +33,7 @@ public class PessoaJuridicaController {
         String bairro = busca.getBairro(CEP);
         String cidade = busca.getCidade(CEP);
         String estado = busca.getUF(CEP);
-        
+
         this.pessoa.setLogradouro(rua);
         this.pessoa.setBairro(bairro);
         this.pessoa.setCidade(cidade);
@@ -50,17 +43,18 @@ public class PessoaJuridicaController {
 
     public void cadastrar() {
 
-     boolean cadastrado = this.service.cadastrarCliente(this.pessoa);
+        boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
 
         System.out.println("");
-     
+
     }
 
-    public ClienteService getService() {
-        return service;
+    public PessoaJuridica getPessoa() {
+        return pessoa;
     }
 
-    public void setService(ClienteService service) {
-        this.service = service;
+    public void setPessoa(PessoaJuridica pessoa) {
+        this.pessoa = pessoa;
     }
+
 }
