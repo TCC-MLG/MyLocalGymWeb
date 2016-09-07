@@ -1,6 +1,8 @@
 package br.com.app.gym.web.model;
 
-public class Login {
+import java.io.Serializable;
+
+public class Login implements Serializable{
 
 	private String usuario;
 	private String senha;

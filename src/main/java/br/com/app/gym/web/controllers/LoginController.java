@@ -1,54 +1,53 @@
 package br.com.app.gym.web.controllers;
 
+import br.com.app.gym.web.model.Academia;
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.app.gym.web.model.Login;
 import br.com.app.gym.web.service.LoginService;
-import br.com.gym.mylocalgym.messages.Message;
+import java.io.Serializable;
+import javax.inject.Named;
 
-@Model
 @RequestScoped
-public class LoginController {
+@Named("loginController")
+public class LoginController implements Serializable {
 
-	private Login login;
-	
-	@Inject
-	private LoginService service;
-	
-	private Message message;
+    private Login login;
 
-	@PostConstruct
-	public void init() {
+    @Inject
+    private LoginService service;
 
-		this.login = new Login();
-		this.setMessage(new Message());
+    @PostConstruct
+    public void init() {
 
-	}
-	
-	public void entrar(){
-		
-		this.setMessage(service.efetuarLogin(login));
-		
-	}
-	
+        this.login = new Login();
 
-	public Login getLogin() {
-		return login;
-	}
+    }
 
-	public void setLogin(Login login) {
-		this.login = login;
-	}
+    public void entrar() {
 
-	public Message getMessage() {
-		return message;
-	}
+       Academia academia = this.service.efetuarLogin(this.login);
+       
+        if (academia.getId() != null) {
+            
+            System.out.println("PULAR PARA O SISTEMA");
+            
+        }else{
+            
+            System.err.println("mensagem de erro.");
+            
+        }
 
-	public void setMessage(Message message) {
-		this.message = message;
-	}
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
 }

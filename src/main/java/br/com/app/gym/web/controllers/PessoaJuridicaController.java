@@ -3,50 +3,62 @@ package br.com.app.gym.web.controllers;
 import java.io.IOException;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
-import javax.faces.bean.RequestScoped;
-import javax.inject.Inject;
 
-import br.com.app.gym.web.model.BuscaCEP;
+import br.com.app.gym.web.utils.BuscaCEP;
 import br.com.app.gym.web.model.PessoaJuridica;
 import br.com.app.gym.web.service.ClienteService;
+import java.io.Serializable;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@Model
-@RequestScoped
-public class PessoaJuridicaController {
-	public PessoaJuridica getPessoa() {
-		return pessoa;
-	}
+@ViewScoped
+@Named("pessoaJuridicaController")
+public class PessoaJuridicaController implements Serializable {
 
-	public void setPessoa(PessoaJuridica pessoa) {
-		this.pessoa = pessoa;
-	}
+    private PessoaJuridica pessoa;
 
-	private PessoaJuridica pessoa;
+    @Inject
+    private ClienteService clienteService;
 
-	@Inject
-	private ClienteService service;
+    @PostConstruct
+    public void init() {
+        this.pessoa = new PessoaJuridica();
+    }
 
-	@PostConstruct
-	public void init() {
-		this.pessoa = new PessoaJuridica();
-	}
+    public void buscaCep() throws IOException {
+        String CEP = pessoa.getCep();
+        BuscaCEP busca = new BuscaCEP();
+        String rua = busca.getEndereco(CEP);
+        String bairro = busca.getBairro(CEP);
+        String cidade = busca.getCidade(CEP);
+        String estado = busca.getUF(CEP);
 
-	public void buscaCep() throws IOException {
-		String CEP = pessoa.getCep();
-		BuscaCEP busca = new BuscaCEP();
-		String rua = busca.getEndereco(CEP);
-		String bairro = busca.getBairro(CEP);
-		String cidade = busca.getCidade(CEP);
-		String estado = busca.getUF(CEP);
+        this.pessoa.setLogradouro(rua);
+        this.pessoa.setBairro(bairro);
+        this.pessoa.setCidade(cidade);
+        this.pessoa.setEstado(estado);
 
-	}
+    }
 
-	public ClienteService getService() {
-		return service;
-	}
+    public String cadastrar() {
 
-	public void setService(ClienteService service) {
-		this.service = service;
-	}
+        
+        boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
+
+        
+        System.out.println("");
+        
+        return "inicio";
+
+    }
+
+    public PessoaJuridica getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(PessoaJuridica pessoa) {
+        this.pessoa = pessoa;
+    }
+
 }
