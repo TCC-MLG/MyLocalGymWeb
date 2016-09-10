@@ -8,7 +8,10 @@ import javax.inject.Inject;
 import br.com.app.gym.web.model.Login;
 import br.com.app.gym.web.service.LoginService;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 @RequestScoped
 @Named("loginController")
@@ -28,16 +31,20 @@ public class LoginController implements Serializable {
 
     public void entrar() {
 
-       Academia academia = this.service.efetuarLogin(this.login);
-       
-        if (academia.getId() != null) {
-            
-            System.out.println("PULAR PARA O SISTEMA");
-            
-        }else{
-            
-            System.err.println("mensagem de erro.");
-            
+        Academia academia = null;//this.service.efetuarLogin(this.login);
+
+        if (academia != null) {
+
+            FacesContext fc = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+            session.setAttribute("ID_USUARIO", academia.getId());
+  
+
+        } else {
+
+            this.login.setSenha(null);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "CNPJ/senha não econtrada!"));
+
         }
 
     }

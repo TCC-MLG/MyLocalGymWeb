@@ -45,7 +45,7 @@ public class PessoaJuridicaController implements Serializable {
 
     public void cadastrar() {
 
-        boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
+        boolean cadastrado = false;//this.clienteService.cadastrarCliente(pessoa);
 
         System.out.println("");
         if (cadastrado) {
