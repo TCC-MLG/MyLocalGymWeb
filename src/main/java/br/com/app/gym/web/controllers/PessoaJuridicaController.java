@@ -50,8 +50,14 @@ public class PessoaJuridicaController implements Serializable {
         System.out.println("");
         if (cadastrado) {
 
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('confirm').show()");
+
         } else {
-            
+
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('dlg1').show()");
+
         }
 
     }
