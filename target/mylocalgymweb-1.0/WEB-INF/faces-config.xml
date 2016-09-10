@@ -10,6 +10,11 @@
             <to-view-id>/site/cadastro.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>principal</from-outcome>
+            <to-view-id>/sistema/checkIn.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/site/cadastro.xhtml</from-view-id>
