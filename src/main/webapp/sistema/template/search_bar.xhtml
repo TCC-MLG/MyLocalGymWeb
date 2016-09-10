@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="jumbotron" style="padding-bottom: 12px; padding-top: 32px;">
+        <div class="container">
+            <div class="row" style="padding-top: 30px;">
+                <div class="col-md-6">
+                    <h:form>
+                        <p:growl id="messages" showDetail="true"/>
+
+                        <p:menuButton value="Menu">
+                            <p:menuitem value="Minha academia" />
+                            <p:menuitem value="Meus dados" />
+                            <p:menuitem value="Historico de clientes" ajax="false" />
+                            <p:menuitem value="Faturamento" ajax="false" />
+                            <p:menuitem value="Fale conosco" ajax="false" />
+                            <p:separator />
+                            <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
+                        </p:menuButton>
+                    </h:form>
+                </div>
+                <div class="col-md-3">
+                </div>            
+            </div>
+        </div>
+    </div>    
+</ui:composition>

@@ -14,25 +14,38 @@
                 <ui:include src="/site/template/top_bar.xhtml" />
             </ui:define>
 
+
+
             <ui:define name="content">
+                &nbsp;&nbsp;
+                <h:form>
+
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+
+                </h:form>
                 <h:form id="panel_login" style="width: 500px; height: 400px; margin: 77px auto auto;">
+                    &nbsp;&nbsp;
                     <div>
-                        <p:panelGrid columns="2">
+                        <p:panelGrid columns="2" id="grid">
 
                             <f:facet name="header">
                                 <p:outputLabel value="Login" />
                             </f:facet>
 
                             <p:outputLabel value="CNPJ:" />
-                            <p:inputText value="#{loginController.login.usuario}"/>
+                            <p:inputText id="login" value="#{loginController.login.usuario}"/>
 
                             <p:outputLabel value="Senha:" />
-                            <p:password value="#{loginController.login.senha}"/>
-
-                            <p:commandButton value="Entrar" action="#{loginController.entrar}"/>
+                            <p:password id="password" value="#{loginController.login.senha}"/>
 
                         </p:panelGrid>
+                        <p:commandButton value="Entrar"
+                                         action="#{loginController.entrar}"
+                                         update="@all"
+                                         style="margin-left: 108px;"/>
                     </div>
+
+
                 </h:form>
 
             </ui:define>
