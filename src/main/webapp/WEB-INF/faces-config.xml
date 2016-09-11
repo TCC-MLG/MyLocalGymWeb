@@ -32,4 +32,20 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/sistema/checkIn.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>go_historico</from-outcome>
+            <to-view-id>/sistema/historico/historico.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/sistema/checkIn.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>go_perfil</from-outcome>
+            <to-view-id>/sistema/perfil/perfil.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
