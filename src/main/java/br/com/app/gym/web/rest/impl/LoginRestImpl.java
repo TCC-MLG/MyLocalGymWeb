@@ -11,7 +11,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-public class LoginRestImpl implements LoginRest{
+public class LoginRestImpl implements LoginRest {
 
     private WebTarget webTarget;
     private Client client;
@@ -21,22 +21,22 @@ public class LoginRestImpl implements LoginRest{
         client = javax.ws.rs.client.ClientBuilder.newClient();
         webTarget = client.target(BASE_URI).path("login");
     }
-    
+
     @Override
     public Academia autenticarAcademia(Login login) throws ClientErrorException {
-       
+
         WebTarget resource = webTarget;
         resource = resource.path(MessageFormat.format("academia/{0}/{1}", new Object[]{login.getUsuario(), login.getSenha()}));
         Response response = resource.request(MediaType.APPLICATION_JSON).get();
-        
-        LoginAcademiaPresenter academia = response.readEntity(LoginAcademiaPresenter.class);  
-        
-        return academia.convert();
-        
+
+        LoginAcademiaPresenter academia = response.readEntity(LoginAcademiaPresenter.class);
+
+        return academia != null ? academia.convert() : null;
+
     }
 
     public void close() {
         client.close();
     }
-    
+
 }
