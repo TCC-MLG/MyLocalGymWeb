@@ -10,6 +10,7 @@ br\com\app\gym\web\rest\LoginRest.class
 br\com\app\gym\web\service\impl\LoginServiceImpl.class
 br\com\app\gym\web\service\ClienteService.class
 br\com\app\gym\web\utils\ConfirmPasswordValidator.class
+br\com\app\gym\web\controllers\FaturamentoController.class
 br\com\app\gym\web\presenters\LoginAcademiaPresenter.class
 br\com\app\gym\web\rest\impl\AcademiaRestImpl.class
 br\com\app\gym\web\utils\RequiredCheckboxValidator.class
