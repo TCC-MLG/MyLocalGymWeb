@@ -27,13 +27,15 @@ public class AcademiaRestImpl implements AcademiaRest{
     @Override
     public boolean cadastrarAcademia(AcademiaParameter academiaParameter) throws ClientErrorException {
         
-        Response response = webTarget.path("cadastrar")
+        Response response = this.webTarget.path("cadastrar")
                 .request(APPLICATION_JSON)
                 .post(entity(academiaParameter, APPLICATION_JSON), Response.class);
 
         Integer status = response.getStatus();
         
-        return status == 204;
+        boolean gravado = status.equals(204);
+        
+        return gravado;
     }
 
     public void close() {

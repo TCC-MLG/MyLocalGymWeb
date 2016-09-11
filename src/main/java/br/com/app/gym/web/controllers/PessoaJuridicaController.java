@@ -8,7 +8,6 @@ import br.com.app.gym.web.utils.BuscaCEP;
 import br.com.app.gym.web.model.PessoaJuridica;
 import br.com.app.gym.web.service.ClienteService;
 import java.io.Serializable;
-import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,7 +28,7 @@ public class PessoaJuridicaController implements Serializable {
     }
 
     public void buscaCep() throws IOException {
-        String CEP = pessoa.getCep();
+        String CEP = pessoa.getCep().toString();
         BuscaCEP busca = new BuscaCEP();
         String rua = busca.getEndereco(CEP);
         String bairro = busca.getBairro(CEP);
@@ -45,18 +44,18 @@ public class PessoaJuridicaController implements Serializable {
 
     public void cadastrar() {
 
-        boolean cadastrado = false;//this.clienteService.cadastrarCliente(pessoa);
+        boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
 
         System.out.println("");
         if (cadastrado) {
-
+            
             RequestContext rc = RequestContext.getCurrentInstance();
             rc.execute("PF('confirm').show()");
 
         } else {
 
             RequestContext rc = RequestContext.getCurrentInstance();
-            rc.execute("PF('dlg1').show()");
+            rc.execute("PF('erro').show()");
 
         }
 

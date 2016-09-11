@@ -32,14 +32,15 @@ public class LoginController implements Serializable {
 
     public String entrar() throws IOException {
 
-        Academia academia = null;//this.service.efetuarLogin(this.login);
+        Academia academia = this.service.efetuarLogin(this.login);
 
-        if (academia == null) {
+        if (academia != null) {
 
-//            FacesContext fc = FacesContext.getCurrentInstance();
-//            HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-//            session.setAttribute("ID_USUARIO", academia.getId());
-        return "principal";
+            FacesContext fc = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+            session.setAttribute("ID_USUARIO", academia.getId());
+
+            return "principal";
 
         } else {
 
@@ -47,7 +48,7 @@ public class LoginController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "CNPJ/senha não econtrada!"));
 
         }
-        
+
         return null;
 
     }

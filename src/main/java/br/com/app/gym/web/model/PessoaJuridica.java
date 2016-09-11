@@ -3,7 +3,7 @@ package br.com.app.gym.web.model;
 import br.com.app.gym.web.parameter.AcademiaParameter;
 import java.io.Serializable;
 
-public class PessoaJuridica implements Serializable{
+public class PessoaJuridica implements Serializable {
     
     private String razaoSocial;
     private Integer cnpj;
@@ -15,30 +15,35 @@ public class PessoaJuridica implements Serializable{
     private String estado;
     private String logradouro;
     private String senha;
-    private String numero;
+    private Integer numero;
     private String complemento;
     
     public AcademiaParameter convert() {
         
         AcademiaParameter ap = new AcademiaParameter();
         
+        ap.setRazaoSocial(this.razaoSocial);
         ap.setCnpj(this.cnpj);
-        ap.setSenha(this.senha);
-        ap.setCidade(this.cidade);
         ap.setEmail(this.email);
-        ap.setEndereco(this.logradouro);
-        ap.setEstado(this.estado);
+        ap.setCep(this.cep);
         ap.setTelefone(this.telefone);
+        ap.setCidade(this.cidade);
+        ap.setBairro(this.bairro);
+        ap.setEstado(this.estado);
+        ap.setLogradouro(this.logradouro);
+        ap.setSenha(this.senha);
+        ap.setNumero(this.numero);
+        ap.setComplemento(this.complemento);
         
         return ap;
         
     }
     
-    public String getNumero() {
+    public Integer getNumero() {
         return numero;
     }
     
-    public void setNumero(String numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
     
