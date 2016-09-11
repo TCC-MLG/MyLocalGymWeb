@@ -48,7 +48,6 @@ public class PessoaJuridicaController implements Serializable {
 
             boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
 
-            System.out.println("");
             if (cadastrado) {
 
                 RequestContext rc = RequestContext.getCurrentInstance();
