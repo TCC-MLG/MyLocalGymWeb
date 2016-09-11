@@ -44,19 +44,29 @@ public class PessoaJuridicaController implements Serializable {
 
     public void cadastrar() {
 
-        boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
+        if (this.pessoa.getSenha().equals(this.pessoa.getSenha2())) {
 
-        System.out.println("");
-        if (cadastrado) {
+            boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
+
+            System.out.println("");
+            if (cadastrado) {
+
+                RequestContext rc = RequestContext.getCurrentInstance();
+                rc.execute("PF('confirm').show()");
+
+            } else {
+
+                RequestContext rc = RequestContext.getCurrentInstance();
+                rc.execute("PF('erro').show()");
+
+            }
+        } else {
+            this.pessoa.setSenha("");
+            this.pessoa.setSenha2("");
             
             RequestContext rc = RequestContext.getCurrentInstance();
-            rc.execute("PF('confirm').show()");
-
-        } else {
-
-            RequestContext rc = RequestContext.getCurrentInstance();
-            rc.execute("PF('erro').show()");
-
+            rc.execute("PF('diferente').show()");
+            
         }
 
     }

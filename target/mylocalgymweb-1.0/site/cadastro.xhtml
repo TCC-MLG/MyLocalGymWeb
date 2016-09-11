@@ -87,7 +87,7 @@
                     &nbsp;&nbsp;
                     <p:fieldset legend="Dados de acesso">
 
-                        <p:panelGrid columns="2" >
+                        <p:panelGrid columns="2" id="grid_senha">
 
                             <p:outputLabel value="Senha " />
                             <p:password id="senha1" maxlength="8"
@@ -95,16 +95,23 @@
                                         validatorMessage="Senhas Diferentes" />
 
                             <p:outputLabel value="Repetir Senha " />
-                            <p:password id="senha2" required="false" maxlength="8" />
+                            <p:password id="senha2" 
+                                        required="false" 
+                                        maxlength="8"
+                                        value="#{pessoaJuridicaController.pessoa.senha2}"/>
 
                             <p:commandButton value="Salvar"
-                                             actionListener="#{pessoaJuridicaController.cadastrar()}"  />
+                                             actionListener="#{pessoaJuridicaController.cadastrar()}" update="grid_senha" />
 
                             <p:commandButton value="cancelar" />
 
 
                         </p:panelGrid>
                     </p:fieldset>
+
+                    <p:dialog id="senha_invalida" header="Error" widgetVar="diferente" minHeight="40">
+                        <h:outputText value="As senhas são diferentes" />
+                    </p:dialog>
 
                     <p:dialog id="nao_cadastrado" header="Error" widgetVar="erro" minHeight="40">
                         <h:outputText value="Não foi possivel realizar o cadastro!" />
