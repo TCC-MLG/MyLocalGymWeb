@@ -98,9 +98,9 @@
                             <p:password id="senha2" required="false" maxlength="8" />
 
                             <p:commandButton value="Salvar"
-                                             actionListener="#{pessoaJuridicaController.cadastrar()}"  />
+                                             actionListener="#{pessoaJuridicaController.cadastrar()}"  update="form_dados_cadastrais" />
 
-                            <p:commandButton value="cancelar" />
+                            <p:commandButton value="cancelar" update="form_dados_cadastrais" />
 
 
                         </p:panelGrid>
@@ -116,7 +116,7 @@
                             <h:commandButton  styleClass="btn btn-sm btn-success active offset" 
                                               style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
                                               value="OK"
-                                              action="home"/>
+                                              action="home" />
                         </p:panelGrid>
                     </p:dialog>
 
