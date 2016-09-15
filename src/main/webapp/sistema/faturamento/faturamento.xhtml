@@ -27,11 +27,9 @@
 
                                         <p:outputLabel value="Periodo"/>
 
-                                        <p:selectOneMenu id="console" style="width:125px">
-                                            <f:selectItem itemLabel="Selecionar" itemValue="" />
-                                            <f:selectItem itemLabel="Mensal" itemValue="" />
-                                            <f:selectItem itemLabel="Semestreal" itemValue="Xbox One" />
-                                            <f:selectItem itemLabel="Anual" itemValue="PS4" />
+                                        <p:selectOneMenu id="console"  value="#{faturamentoController.city}" style="width:125px">
+                                            <f:selectItem itemLabel="Select One" itemValue="" />
+                                            <f:selectItems value="#{faturamentoController.cities}" />
                                         </p:selectOneMenu>
 
                                         <p:commandButton value="Buscar" /> 
