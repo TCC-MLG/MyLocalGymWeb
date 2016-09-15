@@ -14,11 +14,35 @@
                 <ui:include src="/sistema/template/top_bar.xhtml" />
                 <ui:include src="/sistema/template/search_bar.xhtml" />
             </ui:define>
-
-
-
             <ui:define name="content">
+                <h:form id="checkin">
+                    <p:fieldset legend="Check-in">
+                        <p:panelGrid>
+                            <p:tabView>
+                            <p:tab id="foto" title="Foto">
+                                inserir aqui função para fazer upload da foto
+                            </p:tab>
+                            </p:tabView>
 
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="2" >
+
+                            <p:outputLabel value="Usuário / CPF" for="usuario" />
+                            <p:inputText required="true" id="usuario" maxlength="11"
+                                         value="#{pessoaJuridicaController.pessoa.razaoSocial}" size="11" />
+
+                        </p:panelGrid>
+
+                        &nbsp;&nbsp;
+                        <p:commandButton value="Treinar" 
+                                         actionListener="#{pessoaJuridicaController.cadastrar()}" update="checkin" />
+
+                        <p:commandButton value="Recusar"  action="criar_conta" update="checkin"/>
+
+                    </p:fieldset>
+
+                </h:form>
             </ui:define>
 
         </ui:composition>
