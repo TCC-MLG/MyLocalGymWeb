@@ -17,55 +17,69 @@
 
             <ui:define name="content">
 
-                <h:form id="form_dados_faturamento" style="margin-left: 150px; margin-right: 200px;">
-                    <div id="div_parametro">
-                        <p:fieldset legend="Faturamento">
+                <div class="mask">
+                    <p:fieldset>
+                        <div class="super">
+                            <h:form id="form_dados_faturamento" >
+                                <div id="div_parametro">
 
-                            <p:panelGrid id="drid_parametros" columns="2" style="margin-left: 4px;" >
+                                    <p:panelGrid id="drid_parametros" columns="3" style="border-bottom-width: 3px; border-bottom-style: solid;"  >
 
-                                <p:outputLabel value="Periodo"/>
+                                        <p:outputLabel value="Periodo"/>
 
-                                <p:selectOneMenu id="console" style="width:125px">
-                                    <f:selectItem itemLabel="Selecionar" itemValue="" />
-                                    <f:selectItem itemLabel="Mensal" itemValue="" />
-                                    <f:selectItem itemLabel="Semestreal" itemValue="Xbox One" />
-                                    <f:selectItem itemLabel="Anual" itemValue="PS4" />
-                                </p:selectOneMenu>
+                                        <p:selectOneMenu id="console" style="width:125px">
+                                            <f:selectItem itemLabel="Selecionar" itemValue="" />
+                                            <f:selectItem itemLabel="Mensal" itemValue="" />
+                                            <f:selectItem itemLabel="Semestreal" itemValue="Xbox One" />
+                                            <f:selectItem itemLabel="Anual" itemValue="PS4" />
+                                        </p:selectOneMenu>
 
-                            </p:panelGrid>
-                            <p:commandButton value="teste" action="#{faturamentoController.listarFaturamentoPorPeriado()}" />
-                             <p:commandButton value="teste2" action="#{faturamentoController.listarFaturamento()}" />
+                                        <p:commandButton value="Buscar" /> 
 
+                                    </p:panelGrid>
+
+                                </div>
+                            </h:form>
+
+                        </div> 
+                    </p:fieldset>
+                    <div class="colleft">
+                        <p:fieldset>
+                            <div class="col1">
+                                asd
+                            </div>
+                            <div class="col2">
+                                <h:form id="form_dados_corpo">
+                                    <div id="div_corpo" style="margin-right: 0px; margin-left: 53px;">
+
+                                        <h:panelGrid id="drid_corpo" columns="2" >
+
+                                            <p:dataTable id="drid_table" var="car" value="#{dtBasicView.cars}" >
+
+                                                <f:facet name="header">
+                                                    Faturamento
+                                                </f:facet>
+
+                                                <p:column headerText="Mês">
+                                                    <h:outputText  />
+                                                </p:column>
+
+                                                <p:column headerText="Valor">
+                                                    <h:outputText  />
+                                                </p:column>
+
+                                            </p:dataTable>
+
+                                        </h:panelGrid>
+
+                                    </div>
+                                </h:form>
+
+                            </div> 
                         </p:fieldset>
                     </div>
-                </h:form>
-                &nbsp;&nbsp;
-                <h:form id="form_dados_corpo" style="margin-left: 150px; margin-right: 200px;">
-                    <div id="div_corpo">
+                </div>
 
-                        <h:panelGrid id="drid_corpo" columns="2" style="margin-left: 4px;" border="1" >
-
-                            <p:dataTable id="drid_table" var="car" value="#{dtBasicView.cars}" style="margin-right: 1px;">
-
-                                <f:facet name="header">
-                                    List of Cars
-                                </f:facet>
-
-                                <p:column headerText="Mês">
-                                    <h:outputText  />
-                                </p:column>
-
-                                <p:column headerText="Valor">
-                                    <h:outputText  />
-                                </p:column>
-
-                            </p:dataTable>
-
-                        </h:panelGrid>
-
-                    </div>
-                </h:form>
-                &nbsp;&nbsp;
             </ui:define>
 
         </ui:composition>

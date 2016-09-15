@@ -59,4 +59,44 @@
     text-decoration : underline;
 }
 
+.super{
+    float: left;
+    width: 100%;
+
+}
+.mask{
+    
+    overflow: hidden;
+    margin: 0px auto;
+    width: 65%;
+    height: 500px;
+}
+
+.colleft{
+
+    width: 100%;
+    right: 50%;
+    margin: 30px auto;
+    margin-top: 33px;
+    background-color: #f4f4f4
+}
+
+.col1{
+
+    overflow: hidden;
+    float: left;
+    width: 48%;
+    left: 101%;
+    margin: 0px auto;
+    background-color: #e6e6e6
+}
+.col2{
+
+    overflow: hidden;
+    float: left;
+    width: 48%;
+    left: 3%;
+    
+}
+
 
