@@ -52,21 +52,28 @@
 
                                         <h:panelGrid id="drid_corpo" columns="2" >
 
-                                            <p:dataTable id="drid_table" var="car" value="#{dtBasicView.cars}" >
-
+                                            <p:panelGrid columns="2">
                                                 <f:facet name="header">
-                                                    Faturamento
+                                                    <h:outputText value="Periodo" />
                                                 </f:facet>
 
-                                                <p:column headerText="Mês">
-                                                    <h:outputText  />
-                                                </p:column>
 
-                                                <p:column headerText="Valor">
-                                                    <h:outputText  />
-                                                </p:column>
+                                                <h:outputText value="Semanal:" />
+                                                <h:outputText value="#{faturamentoController.periodoParameter.semanal}" />
 
-                                            </p:dataTable>
+                                                <h:outputText value="Mensal:" />
+                                                <h:outputText value="#{faturamentoController.periodoParameter.mensal}" />
+
+                                                <h:outputText value="Trimestral:" />
+                                                <h:outputText value="#{faturamentoController.periodoParameter.trimestral}" />
+
+                                                <h:outputText value="Semestral:" />
+                                                <h:outputText value="#{faturamentoController.periodoParameter.semestral}" />
+
+                                                <h:outputText value="Anual:" />
+                                                <h:outputText value="#{faturamentoController.periodoParameter.anual}" />
+
+                                            </p:panelGrid>
 
                                         </h:panelGrid>
 

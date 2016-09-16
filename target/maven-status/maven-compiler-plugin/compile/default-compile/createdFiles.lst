@@ -8,6 +8,7 @@ br\com\app\gym\web\rest\impl\FaturamentoRestImpl$1.class
 br\com\app\gym\web\controllers\PessoaJuridicaController.class
 br\com\app\gym\web\model\PessoaJuridica.class
 br\com\app\gym\web\service\impl\LoginServiceImpl.class
+br\com\app\gym\web\parameter\PeriodoParameter.class
 br\com\app\gym\web\utils\ConfirmPasswordValidator.class
 br\com\app\gym\web\controllers\FaturamentoController.class
 br\com\app\gym\web\controllers\PerfilController.class
@@ -26,6 +27,7 @@ br\com\app\gym\web\rest\FaturamentoRest.class
 br\com\app\gym\web\service\ClienteService.class
 br\com\app\gym\web\presenters\LoginAcademiaPresenter.class
 br\com\app\gym\web\utils\ManipulateDate.class
+br\com\app\gym\web\model\Periodo.class
 br\com\app\gym\web\service\impl\ClienteServiceImpl.class
 br\com\app\gym\web\service\LoginService.class
 br\com\app\gym\web\rest\AcademiaRest.class

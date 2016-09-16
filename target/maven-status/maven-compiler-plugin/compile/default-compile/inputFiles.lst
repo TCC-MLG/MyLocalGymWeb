@@ -19,12 +19,14 @@ C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\contro
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\ClienteService.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\RequiredCheckboxValidator.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parameter\AcademiaParameter.java
+C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\Periodo.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\BuscaCEP.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\LoginService.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\impl\LoginServiceImpl.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\ManipulateDate.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\Faturamento.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parameter\FaturamentoParameter.java
+C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parameter\PeriodoParameter.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\impl\ClienteServiceImpl.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\controllers\FaturamentoController.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\FaturamentoService.java

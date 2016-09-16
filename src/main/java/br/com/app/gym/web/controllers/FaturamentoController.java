@@ -1,11 +1,11 @@
 package br.com.app.gym.web.controllers;
 
+import br.com.app.gym.web.parameter.PeriodoParameter;
 import br.com.app.gym.web.service.FaturamentoService;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,14 +22,20 @@ public class FaturamentoController implements Serializable {
 
     private String city;
     private Map<String, String> cities = new HashMap<String, String>();
+    private PeriodoParameter periodoParameter;
 
     @PostConstruct
     public void init() {
 
         setCities(new HashMap<String, String>());
-        getCities().put("Mensal", "New York");
-        getCities().put("Semestral", "London");
-        getCities().put("Anual", "Paris");
+        getCities().put("Semanal", "1");
+        getCities().put("Mensal", "2");
+        getCities().put("Semestral", "3");
+        getCities().put("Anual", "4");
+        
+        this.periodoParameter = new PeriodoParameter();
+        
+         this.listarFaturamento();
 
     }
 
@@ -39,10 +45,16 @@ public class FaturamentoController implements Serializable {
 
     }
 
-    public void listarFaturamento() {
+    public void listarTransacoes() {
 
         this.faturamentoService.listarTransacoes();
 
+    }
+    
+    public void listarFaturamento(){
+        
+       this.periodoParameter = this.faturamentoService.listarFaturamento("1");
+        
     }
 
     public String getCity() {
@@ -59,6 +71,14 @@ public class FaturamentoController implements Serializable {
 
     public void setCities(Map<String, String> cities) {
         this.cities = cities;
+    }
+
+    public PeriodoParameter getPeriodoParameter() {
+        return periodoParameter;
+    }
+
+    public void setPeriodoParameter(PeriodoParameter periodoParameter) {
+        this.periodoParameter = periodoParameter;
     }
 
 }

@@ -1,6 +1,7 @@
 package br.com.app.gym.web.rest.impl;
 
 import br.com.app.gym.web.parameter.FaturamentoParameter;
+import br.com.app.gym.web.parameter.PeriodoParameter;
 import java.util.List;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
@@ -45,8 +46,19 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
 
         List<FaturamentoParameter> parameters = response.readEntity(new GenericType<List<FaturamentoParameter>>() {
         });
-        
+
         return parameters;
+    }
+
+    @Override
+    public PeriodoParameter listarFaturamento(String academiaId) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(MessageFormat.format("periodos/{0}", new Object[]{academiaId}));
+        Response response = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get();
+        
+        PeriodoParameter periodoParameter = response.readEntity(PeriodoParameter.class);
+        
+        return periodoParameter;
     }
 
     public void close() {
