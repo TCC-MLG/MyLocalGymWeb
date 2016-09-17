@@ -1,5 +1,6 @@
 package br.com.app.gym.web.rest.impl;
 
+import br.com.app.gym.web.model.Faturamento;
 import br.com.app.gym.web.parameter.FaturamentoParameter;
 import br.com.app.gym.web.parameter.PeriodoParameter;
 import java.util.List;
@@ -12,6 +13,7 @@ import javax.ws.rs.core.Response;
 import br.com.app.gym.web.rest.FaturamentoRest;
 import java.io.Serializable;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import javax.ws.rs.core.GenericType;
 
 public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
@@ -26,28 +28,20 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
     }
 
     @Override
-    public List<FaturamentoParameter> listarTransacoesPorPeriodo(String periodo) throws ClientErrorException {
+    public List<Faturamento> listarTransacoesPorPeriodo(Integer academiaId, String periodo) throws ClientErrorException {
         WebTarget resource = webTarget;
-        resource = resource.path(MessageFormat.format("listar/{0}", new Object[]{periodo}));
+        resource = resource.path(MessageFormat.format("listar/{0}/periodo/{1}", new Object[]{academiaId, periodo}));
         Response response = resource.request(MediaType.APPLICATION_JSON).get();
 
         List<FaturamentoParameter> parameters = response.readEntity(new GenericType<List<FaturamentoParameter>>() {
         });
 
-        return parameters;
-    }
+        List<Faturamento> faturamentos = new ArrayList<>();
+        for (FaturamentoParameter parameter : parameters) {
+            faturamentos.add(parameter.convert());
+        }
 
-    @Override
-    public List<FaturamentoParameter> listarTransacoes() throws ClientErrorException {
-        WebTarget resource = webTarget;
-        resource = resource.path("listar");
-
-        Response response = resource.request(MediaType.APPLICATION_JSON).get();
-
-        List<FaturamentoParameter> parameters = response.readEntity(new GenericType<List<FaturamentoParameter>>() {
-        });
-
-        return parameters;
+        return faturamentos;
     }
 
     @Override
@@ -55,9 +49,9 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
         WebTarget resource = webTarget;
         resource = resource.path(MessageFormat.format("periodos/{0}", new Object[]{academiaId}));
         Response response = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get();
-        
+
         PeriodoParameter periodoParameter = response.readEntity(PeriodoParameter.class);
-        
+
         return periodoParameter;
     }
 

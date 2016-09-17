@@ -1,5 +1,6 @@
 package br.com.app.gym.web.parameter;
 
+import br.com.app.gym.web.model.Faturamento;
 import java.math.BigDecimal;
 
 /**
@@ -7,16 +8,30 @@ import java.math.BigDecimal;
  */
 public class FaturamentoParameter {
 
-    private String dataTransacao;
+    private String nome;
 
     private BigDecimal valor;
 
-    public String getDataTransacao() {
-        return dataTransacao;
+    private String horario;
+
+    public Faturamento convert() {
+
+        Faturamento faturamento = new Faturamento();
+
+        faturamento.setNome(this.nome);
+        faturamento.setHorario(this.horario);
+        faturamento.setValor(this.valor);
+
+        return faturamento;
+        
     }
 
-    public void setDataTransacao(String dataTransacao) {
-        this.dataTransacao = dataTransacao;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public BigDecimal getValor() {
@@ -25,6 +40,14 @@ public class FaturamentoParameter {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
 }

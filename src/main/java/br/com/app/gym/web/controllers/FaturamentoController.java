@@ -1,14 +1,20 @@
 package br.com.app.gym.web.controllers;
 
+import br.com.app.gym.web.model.Faturamento;
 import br.com.app.gym.web.parameter.PeriodoParameter;
 import br.com.app.gym.web.service.FaturamentoService;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Luciano
@@ -23,38 +29,46 @@ public class FaturamentoController implements Serializable {
     private String city;
     private Map<String, String> cities = new HashMap<String, String>();
     private PeriodoParameter periodoParameter;
+    private List<Faturamento> faturamento;
 
     @PostConstruct
     public void init() {
 
-        setCities(new HashMap<String, String>());
+        setCities(new LinkedHashMap<String, String>());
         getCities().put("Hoje", "1");
         getCities().put("7", "2");
         getCities().put("15", "3");
         getCities().put("30", "4");
-        
+
         this.periodoParameter = new PeriodoParameter();
-        
-         this.listarFaturamento();
+        this.faturamento = new ArrayList<>();
+
+        this.listarFaturamento();
+
+        this.setFaturamento(this.faturamentoService.listarTransacoesPorPeriodo(buscarIdSessao(), "1"));
 
     }
 
     public void listarFaturamentoPorPeriado() {
 
-        this.faturamentoService.listarTransacoesPorPeriodo("11-09-2016");
+        this.setFaturamento(this.faturamentoService.listarTransacoesPorPeriodo(buscarIdSessao(), this.city));
 
     }
 
-    public void listarTransacoes() {
+    public void listarFaturamento() {
 
-        this.faturamentoService.listarTransacoes();
+        this.periodoParameter = this.faturamentoService.listarFaturamento("1");
 
     }
-    
-    public void listarFaturamento(){
+
+    public Integer buscarIdSessao() {
+
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        int idUsuarioSession = (int) session.getAttribute("ID_USUARIO");
         
-       this.periodoParameter = this.faturamentoService.listarFaturamento("1");
-        
+        return idUsuarioSession;
+
     }
 
     public String getCity() {
@@ -79,6 +93,14 @@ public class FaturamentoController implements Serializable {
 
     public void setPeriodoParameter(PeriodoParameter periodoParameter) {
         this.periodoParameter = periodoParameter;
+    }
+
+    public List<Faturamento> getFaturamento() {
+        return faturamento;
+    }
+
+    public void setFaturamento(List<Faturamento> faturamento) {
+        this.faturamento = faturamento;
     }
 
 }

@@ -31,7 +31,7 @@
                                             <f:selectItems value="#{faturamentoController.cities}" />
                                         </p:selectOneMenu>
 
-                                        <p:commandButton value="Buscar" /> 
+                                        <p:commandButton value="Buscar" actionListener="#{faturamentoController.listarFaturamentoPorPeriado()}" update="form_movimento_atual"/> 
 
                                     </p:panelGrid>
 
@@ -46,22 +46,22 @@
                                 <h:form id="form_movimento_atual">
                                     <div id="div_corpo_diario">
 
-                                        <p:dataTable var="car" value="#{dtBasicView.cars}" scrollable="true" scrollHeight="300">
+                                        <p:dataTable var="faturamento" value="#{faturamentoController.faturamento}" scrollable="true" scrollHeight="300">
 
                                             <f:facet name="header">
                                                 <h:outputText value="Movimento:16-09-2016" />
                                             </f:facet>
 
                                             <p:column headerText="Nome">
-                                                <h:outputText value="#{car.id}" />
+                                                <h:outputText value="#{faturamento.nome}" />
                                             </p:column>
 
                                             <p:column headerText="Valor">
-                                                <h:outputText value="#{car.year}" />
+                                                <h:outputText value="#{faturamento.valor}" />
                                             </p:column>
 
                                             <p:column headerText="Horario">
-                                                <h:outputText value="#{car.brand}" />
+                                                <h:outputText value="#{faturamento.horario}" />
                                             </p:column>
 
                                         </p:dataTable>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="col2">
                                 <h:form id="form_resumo_periodo">
-                                    <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 176px; margin-top: 2px;">
+                                    <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 176px; margin-top: 3px;">
 
                                         <p:panelGrid columns="2">
                                             <f:facet name="header">

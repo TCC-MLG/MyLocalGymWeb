@@ -10,9 +10,7 @@ import javax.ws.rs.ClientErrorException;
  */
 public interface FaturamentoService {
 
-    public List<Faturamento> listarTransacoesPorPeriodo(String periodo);
-    
-    public List<Faturamento> listarTransacoes();
+    public List<Faturamento> listarTransacoesPorPeriodo(Integer academiaId, String dias);
     
     public PeriodoParameter listarFaturamento(String academiaId) throws ClientErrorException;
 

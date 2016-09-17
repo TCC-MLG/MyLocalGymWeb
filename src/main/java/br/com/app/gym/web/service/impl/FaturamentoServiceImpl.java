@@ -17,20 +17,12 @@ public class FaturamentoServiceImpl implements FaturamentoService, Serializable 
     @Inject
     private FaturamentoRest historicoTransacaoRest;
 
-    @Override
-    public List<Faturamento> listarTransacoesPorPeriodo(String periodo) {
+     @Override
+    public List<Faturamento> listarTransacoesPorPeriodo(Integer academiaId, String periodo) {
 
-        this.historicoTransacaoRest.listarTransacoesPorPeriodo(periodo);
+        List<Faturamento> faturamentos = this.historicoTransacaoRest.listarTransacoesPorPeriodo(academiaId, periodo);
 
-        return null;
-    }
-
-    @Override
-    public List<Faturamento> listarTransacoes() {
-
-        this.historicoTransacaoRest.listarTransacoes();
-
-        return null;
+        return faturamentos;
     }
 
     @Override
