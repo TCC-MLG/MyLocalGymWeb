@@ -28,10 +28,10 @@ public class FaturamentoController implements Serializable {
     public void init() {
 
         setCities(new HashMap<String, String>());
-        getCities().put("Semanal", "1");
-        getCities().put("Mensal", "2");
-        getCities().put("Semestral", "3");
-        getCities().put("Anual", "4");
+        getCities().put("Hoje", "1");
+        getCities().put("7", "2");
+        getCities().put("15", "3");
+        getCities().put("30", "4");
         
         this.periodoParameter = new PeriodoParameter();
         

@@ -16,7 +16,7 @@
             </ui:define>
 
             <ui:define name="content">
-
+                <p:outputLabel value="Faturamento" style="margin-left: 265px; font-size: 23px; color: rgb(87, 87, 87);"/>
                 <div class="mask">
                     <p:fieldset>
                         <div class="super">
@@ -28,7 +28,6 @@
                                         <p:outputLabel value="Periodo"/>
 
                                         <p:selectOneMenu id="console"  value="#{faturamentoController.city}" style="width:125px">
-                                            <f:selectItem itemLabel="Select One" itemValue="" />
                                             <f:selectItems value="#{faturamentoController.cities}" />
                                         </p:selectOneMenu>
 
@@ -44,38 +43,64 @@
                     <div class="colleft">
                         <p:fieldset>
                             <div class="col1">
-                                asd
+                                <h:form id="form_movimento_atual">
+                                    <div id="div_corpo_diario">
+
+                                        <p:dataTable var="car" value="#{dtBasicView.cars}" scrollable="true" scrollHeight="300">
+
+                                            <f:facet name="header">
+                                                <h:outputText value="Movimento:16-09-2016" />
+                                            </f:facet>
+
+                                            <p:column headerText="Nome">
+                                                <h:outputText value="#{car.id}" />
+                                            </p:column>
+
+                                            <p:column headerText="Valor">
+                                                <h:outputText value="#{car.year}" />
+                                            </p:column>
+
+                                            <p:column headerText="Horario">
+                                                <h:outputText value="#{car.brand}" />
+                                            </p:column>
+
+                                        </p:dataTable>
+                                        
+                                        <p:panelGrid columns="2">
+
+                                            <h:outputText value="Total: " />
+                                            <h:outputText value="100" />
+
+                                        </p:panelGrid>
+
+                                    </div>
+                                </h:form>
                             </div>
                             <div class="col2">
-                                <h:form id="form_dados_corpo">
-                                    <div id="div_corpo" style="margin-right: 0px; margin-left: 53px;">
+                                <h:form id="form_resumo_periodo">
+                                    <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 176px; margin-top: 2px;">
 
-                                        <h:panelGrid id="drid_corpo" columns="2" >
+                                        <p:panelGrid columns="2">
+                                            <f:facet name="header">
+                                                <h:outputText value="Periodo" />
+                                            </f:facet>
 
-                                            <p:panelGrid columns="2">
-                                                <f:facet name="header">
-                                                    <h:outputText value="Periodo" />
-                                                </f:facet>
+                                            <h:outputText value="Semanal:" />
+                                            <h:outputText value="#{faturamentoController.periodoParameter.semanal}" />
 
+                                            <h:outputText value="Mensal:" />
+                                            <h:outputText value="#{faturamentoController.periodoParameter.mensal}" />
 
-                                                <h:outputText value="Semanal:" />
-                                                <h:outputText value="#{faturamentoController.periodoParameter.semanal}" />
+                                            <h:outputText value="Trimestral:" />
+                                            <h:outputText value="#{faturamentoController.periodoParameter.trimestral}" />
 
-                                                <h:outputText value="Mensal:" />
-                                                <h:outputText value="#{faturamentoController.periodoParameter.mensal}" />
+                                            <h:outputText value="Semestral:" />
+                                            <h:outputText value="#{faturamentoController.periodoParameter.semestral}" />
 
-                                                <h:outputText value="Trimestral:" />
-                                                <h:outputText value="#{faturamentoController.periodoParameter.trimestral}" />
+                                            <h:outputText value="Anual:" />
+                                            <h:outputText value="#{faturamentoController.periodoParameter.anual}" />
 
-                                                <h:outputText value="Semestral:" />
-                                                <h:outputText value="#{faturamentoController.periodoParameter.semestral}" />
-
-                                                <h:outputText value="Anual:" />
-                                                <h:outputText value="#{faturamentoController.periodoParameter.anual}" />
-
-                                            </p:panelGrid>
-
-                                        </h:panelGrid>
+                                        </p:panelGrid>
 
                                     </div>
                                 </h:form>
