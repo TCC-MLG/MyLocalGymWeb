@@ -36,22 +36,21 @@ public class FaturamentoController implements Serializable {
 
         setCities(new LinkedHashMap<String, String>());
         getCities().put("Hoje", "1");
-        getCities().put("7", "2");
-        getCities().put("15", "3");
-        getCities().put("30", "4");
+        getCities().put("7", "7");
+        getCities().put("15", "15");
+        getCities().put("30", "30");
 
         this.periodoParameter = new PeriodoParameter();
         this.faturamento = new ArrayList<>();
 
+        this.faturamento = this.faturamentoService.listarTransacoesPorPeriodo(buscarIdSessao(), "1");
         this.listarFaturamento();
-
-        this.setFaturamento(this.faturamentoService.listarTransacoesPorPeriodo(buscarIdSessao(), "1"));
 
     }
 
     public void listarFaturamentoPorPeriado() {
 
-        this.setFaturamento(this.faturamentoService.listarTransacoesPorPeriodo(buscarIdSessao(), this.city));
+        this.faturamento = this.faturamentoService.listarTransacoesPorPeriodo(buscarIdSessao(), this.city);
 
     }
 
@@ -66,7 +65,7 @@ public class FaturamentoController implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         int idUsuarioSession = (int) session.getAttribute("ID_USUARIO");
-        
+
         return idUsuarioSession;
 
     }
@@ -97,10 +96,6 @@ public class FaturamentoController implements Serializable {
 
     public List<Faturamento> getFaturamento() {
         return faturamento;
-    }
-
-    public void setFaturamento(List<Faturamento> faturamento) {
-        this.faturamento = faturamento;
     }
 
 }

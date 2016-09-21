@@ -36,12 +36,16 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
         List<FaturamentoParameter> parameters = response.readEntity(new GenericType<List<FaturamentoParameter>>() {
         });
 
-        List<Faturamento> faturamentos = new ArrayList<>();
-        for (FaturamentoParameter parameter : parameters) {
-            faturamentos.add(parameter.convert());
-        }
+        if (parameters != null && !parameters.isEmpty()) {
 
-        return faturamentos;
+            List<Faturamento> faturamentos = new ArrayList<>();
+            for (FaturamentoParameter parameter : parameters) {
+                faturamentos.add(parameter.convert());
+            }
+            return faturamentos;
+        }
+        return new ArrayList<>();
+
     }
 
     @Override
