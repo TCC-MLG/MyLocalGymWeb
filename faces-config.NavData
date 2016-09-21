@@ -4,9 +4,9 @@
     <Scope Scope="Project">
         <Node id="sistema/template/footer.xhtml" x="400" y="600" zoom="true"/>
         <Node id="sistema/checkIn.xhtml" x="12" y="87" zoom="true"/>
-        <Node id="site/index.xhtml" x="650" y="300" zoom="false"/>
-        <Node id="sistema/template/search_bar.xhtml" x="1020" y="278" zoom="false"/>
+        <Node id="sistema/template/search_bar.xhtml" x="1019" y="289" zoom="false"/>
         <Node id="sistema/template/top_bar.xhtml" x="541" y="88" zoom="true"/>
+        <Node id="site/index.xhtml" x="650" y="300" zoom="false"/>
         <Node id="site/template/template.xhtml" x="69" y="266" zoom="false"/>
         <Node id="site/template/top_bar.xhtml" x="900" y="150" zoom="true"/>
         <Node id="site/template/footer.xhtml" x="400" y="450" zoom="true"/>
