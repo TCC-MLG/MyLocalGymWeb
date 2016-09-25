@@ -18,7 +18,7 @@ public class FaturamentoServiceImpl implements FaturamentoService, Serializable 
     @Inject
     private FaturamentoRest historicoTransacaoRest;
 
-     @Override
+    @Override
     public List<Faturamento> listarTransacoesPorPeriodo(Integer academiaId, String periodo) {
 
         List<Faturamento> faturamentos = this.historicoTransacaoRest.listarTransacoesPorPeriodo(academiaId, periodo);
@@ -28,15 +28,17 @@ public class FaturamentoServiceImpl implements FaturamentoService, Serializable 
 
     @Override
     public PeriodoParameter listarFaturamento(String academiaId) throws ClientErrorException {
-        
+
         return this.historicoTransacaoRest.listarFaturamento(academiaId);
-        
+
     }
-    
-    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email) throws ClientErrorException{
-        
-        return this.historicoTransacaoRest.listarHistoricoClientes(academiaId, start, end, nome, email);
-        
+
+    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, HistoricoClienteModel dadosCliente) throws ClientErrorException {
+
+        Integer cpf = dadosCliente.getCpfInput() == null ? Integer.getInteger(dadosCliente.getCpfInput().replace(".", "").replace(".", "").replace("-", "")) : null;
+
+        return this.historicoTransacaoRest.listarHistoricoClientes(academiaId, start, end, dadosCliente.getNome(), dadosCliente.getEmail(), cpf);
+
     }
 
 }

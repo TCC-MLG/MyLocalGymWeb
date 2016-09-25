@@ -1,4 +1,5 @@
 br\com\app\gym\web\controllers\HistoricoController.class
+br\com\app\gym\web\utils\DateUtil.class
 br\com\app\gym\web\service\impl\FaturamentoServiceImpl.class
 br\com\app\gym\web\service\FaturamentoService.class
 br\com\app\gym\web\parameter\FaturamentoParameter.class

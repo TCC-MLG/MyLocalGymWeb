@@ -11,6 +11,7 @@ public class HistoricoClienteModel implements Serializable {
     private Integer id;
     private String nome;
     private Integer cpf;
+    private String cpfInput;
     private String email;
     private String telefone;
     private boolean exameMedico;
@@ -106,6 +107,14 @@ public class HistoricoClienteModel implements Serializable {
 
     public void setDataTransacao(String dataTransacao) {
         this.dataTransacao = dataTransacao;
+    }
+
+    public String getCpfInput() {
+        return cpfInput;
+    }
+
+    public void setCpfInput(String cpfInput) {
+        this.cpfInput = cpfInput;
     }
 
 }

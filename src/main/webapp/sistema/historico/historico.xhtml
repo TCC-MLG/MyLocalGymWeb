@@ -18,35 +18,34 @@
             <ui:define name="content">
 
                 <p:outputLabel value="Histórico de usuarios" style="margin-left: 265px; font-size: 23px; color: rgb(87, 87, 87);"/>
-                <div class="mask">
+                <div class="mask" style="height: 640px">
                     <p:fieldset>
                         <div class="super">
                             <h:form id="form_dados_historico" >
                                 <div id="div_parametro">
 
-                                    <p:panelGrid id="drid_parametros" columns="2" style="margin-top: 9px; margin-bottom: 10px;">
+                                    <p:panelGrid id="drid_parametros" columns="4" style="margin-top: 9px; margin-bottom: 10px;">
 
                                         <p:outputLabel value="Nome: "/>
-
-                                        <p:inputText value="" style="margin-right: 1px; padding-right: 160px;"/>
+                                        <p:inputText value="#{historicoController.dadosCliente.nome}" style="margin-right: 1px; padding-right: 160px;"/>
 
                                         <p:outputLabel value="CPF: "/>
-
-                                        <p:inputMask value="" mask="999.999.999-99"/>
+                                        <p:inputMask value="#{historicoController.dadosCliente.cpfInput}" mask="999.999.999-99"/>
 
                                         <p:outputLabel value="E-mail: "/>
-
-                                        <p:inputText value=""/>
-
-                                        <p:outputLabel value="De: "/>
-                                        <p:inputMask value="" mask="99/99/9999" />
-
-                                        <p:outputLabel value="Até: "/>
-                                        <p:inputMask value="" mask="99/99/9999" />
+                                        <p:inputText value="#{historicoController.dadosCliente.email}"/>
 
                                     </p:panelGrid>
+                                    <p:panelGrid  columns="4">
 
-                                    <p:commandButton value="Buscar"/>
+                                        <p:outputLabel value="De: "/>
+                                        <p:inputMask value="#{historicoController.startDate}" mask="99/99/9999" />
+
+                                        <p:outputLabel value="Até: "/>
+                                        <p:inputMask value="#{historicoController.endDate}" mask="99/99/9999" />
+
+                                    </p:panelGrid>
+                                    <p:commandButton value="Buscar" actionListener="#{historicoController.listarHistorico()}" update="form_movimento_atual"/>
 
                                 </div>
                             </h:form>
@@ -55,30 +54,38 @@
                     </p:fieldset>
                     <div class="colleft">
                         <p:fieldset>
-                            <div class="col1">
+                            <div>
                                 <h:form id="form_movimento_atual">
                                     <div id="div_corpo_diario">
 
-                                        <p:dataTable var="faturamento" value="#{faturamentoController.faturamento}" scrollable="true" scrollHeight="300">
+                                        <p:dataTable var="cli" value="#{historicoController.clientesList}" scrollable="true" scrollHeight="300">
 
                                             <f:facet name="header">
                                                 <h:outputText value="Histórico" />
                                             </f:facet>
 
                                             <p:column headerText="Nome">
-                                                <h:outputText value="#{faturamento.nome}" />
-                                            </p:column>
-
-                                            <p:column headerText="Valor">
-                                                <h:outputText value="#{faturamento.valor}" />
+                                                <h:outputText value="#{cli.nome}" />
                                             </p:column>
 
                                             <p:column headerText="CPF">
-                                                <h:outputText value="#{faturamento.horario}" />
+                                                <h:outputText value="#{cli.cpf}" />
+                                            </p:column>
+
+                                            <p:column headerText="E-mail">
+                                                <h:outputText value="#{cli.email}" />
+                                            </p:column>
+
+                                            <p:column headerText="Valor">
+                                                <h:outputText value="#{cli.valor}" />
                                             </p:column>
 
                                             <p:column headerText="Data">
-                                                <h:outputText value="#{faturamento.horario}" />
+                                                <h:outputText value="#{cli.dataTransacao}" />
+                                            </p:column>
+
+                                            <p:column headerText="Exame atualizado">
+                                                <p:selectBooleanCheckbox value="#{cli.exameMedico}" disabled="true"/>
                                             </p:column>
 
                                         </p:dataTable>

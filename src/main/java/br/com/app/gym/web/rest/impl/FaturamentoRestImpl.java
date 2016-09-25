@@ -61,35 +61,38 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
         return periodoParameter;
     }
 
-    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email) throws ClientErrorException {
+    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email, Integer cpf) throws ClientErrorException {
         WebTarget resource = webTarget;
-        if (start != null) {
+        if (start != null && !start.isEmpty()) {
             resource = resource.queryParam("start", start);
         }
-        if (end != null) {
+        if (end != null && !end.isEmpty()) {
             resource = resource.queryParam("end", end);
         }
-        if (nome != null) {
+        if (nome != null && !nome.isEmpty()) {
             resource = resource.queryParam("nome", nome);
         }
-        if (email != null) {
+        if (email != null && !email.isEmpty()) {
             resource = resource.queryParam("email", email);
         }
+        if (cpf != null) {
+            resource = resource.queryParam("cpf", email);
+        }
         resource = resource.path(java.text.MessageFormat.format("historico/{0}", new Object[]{academiaId}));
-        
+
         Response response = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get();
-        
-        List<HistoricoClienteParameter> clienteParameters = response.readEntity(new GenericType<List<HistoricoClienteParameter>>() {});
-        
+
+        List<HistoricoClienteParameter> clienteParameters = response.readEntity(new GenericType<List<HistoricoClienteParameter>>() {
+        });
+
         List<HistoricoClienteModel> clientes = new ArrayList<>();
         for (HistoricoClienteParameter cliente : clienteParameters) {
-            
+
             clientes.add(cliente.convert());
-            
+
         }
-        
-        
-        return clientes; 
+
+        return clientes;
     }
 
     public void close() {

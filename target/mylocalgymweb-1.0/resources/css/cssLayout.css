@@ -65,12 +65,19 @@
 
 }
 .mask{
-    
+
     overflow: hidden;
     margin: 0px auto;
     width: 65%;
     height: 560px;
 }
+.mask_historico{
+    overflow: hidden;
+    margin: 0px auto;
+    width: 65%;
+    height: 640px
+}
+
 
 .colleft{
 
@@ -96,7 +103,7 @@
     float: left;
     width: 48%;
     left: 3%;
-    
+
 }
 
 
