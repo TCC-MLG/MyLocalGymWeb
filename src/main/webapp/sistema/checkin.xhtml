@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/sistema/template/template.xhtml">
+
+            <ui:define name="top">
+                <ui:include src="/sistema/template/top_bar.xhtml" />
+                <ui:include src="/sistema/template/search_bar.xhtml" />
+            </ui:define>
+
+            <ui:define name="content">
+                <p:outputLabel value="Checkin" style="margin-left: 265px; font-size: 23px; color: rgb(87, 87, 87);"/>
+                <div class="mask">
+                    <div class="colleft">
+                        <p:fieldset>
+                            <div class="col1">
+                                <div>
+                                    <h:graphicImage value=""/>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div>
+                                    <h:form id="form_dados_usuario">
+                                        <p:panelGrid id="drid_entrada" columns="2">
+
+                                            <f:facet name="header">
+                                                <h:outputText value="Dados do usuário" />
+                                            </f:facet>
+
+                                            <p:outputLabel value="Nome"/>
+                                            <p:inputText value="" disabled="true"/>
+
+                                            <p:outputLabel value="RG"/>
+                                            <p:inputText value="" disabled="true"/>
+
+                                            <p:outputLabel value="CPF"/>
+                                            <p:inputText value="" disabled="true"/>
+
+                                            <p:outputLabel value="Exame válido"/>
+                                            <p:inputText value="" disabled="true"/>
+
+                                        </p:panelGrid>
+                                    </h:form>
+                                </div>
+                            </div> 
+                        </p:fieldset>
+                    </div>
+                    <div id="botao" style="margin: 0px 0px 0px 377px;">
+
+                        <h:form id="form_botao">
+                            <p:panelGrid columns="2" >
+
+                                <p:commandButton value="Recusar" />
+
+                                <p:commandButton value="Liberar" />
+
+                            </p:panelGrid>
+                        </h:form>
+                    </div>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
