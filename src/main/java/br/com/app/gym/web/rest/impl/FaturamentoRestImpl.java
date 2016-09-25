@@ -1,7 +1,9 @@
 package br.com.app.gym.web.rest.impl;
 
 import br.com.app.gym.web.model.Faturamento;
+import br.com.app.gym.web.model.HistoricoClienteModel;
 import br.com.app.gym.web.parameter.FaturamentoParameter;
+import br.com.app.gym.web.parameter.HistoricoClienteParameter;
 import br.com.app.gym.web.parameter.PeriodoParameter;
 import java.util.List;
 import javax.ws.rs.ClientErrorException;
@@ -57,6 +59,37 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
         PeriodoParameter periodoParameter = response.readEntity(PeriodoParameter.class);
 
         return periodoParameter;
+    }
+
+    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        if (start != null) {
+            resource = resource.queryParam("start", start);
+        }
+        if (end != null) {
+            resource = resource.queryParam("end", end);
+        }
+        if (nome != null) {
+            resource = resource.queryParam("nome", nome);
+        }
+        if (email != null) {
+            resource = resource.queryParam("email", email);
+        }
+        resource = resource.path(java.text.MessageFormat.format("historico/{0}", new Object[]{academiaId}));
+        
+        Response response = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get();
+        
+        List<HistoricoClienteParameter> clienteParameters = response.readEntity(new GenericType<List<HistoricoClienteParameter>>() {});
+        
+        List<HistoricoClienteModel> clientes = new ArrayList<>();
+        for (HistoricoClienteParameter cliente : clienteParameters) {
+            
+            clientes.add(cliente.convert());
+            
+        }
+        
+        
+        return clientes; 
     }
 
     public void close() {

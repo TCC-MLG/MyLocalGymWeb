@@ -59,15 +59,18 @@
         <navigation-case>
             <from-outcome>go_historico</from-outcome>
             <to-view-id>/sistema/historico/historico.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         
         <navigation-case>
             <from-outcome>principal</from-outcome>
             <to-view-id>/sistema/checkIn.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>go_perfil</from-outcome>
             <to-view-id>/sistema/perfil/perfil.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 </faces-config>

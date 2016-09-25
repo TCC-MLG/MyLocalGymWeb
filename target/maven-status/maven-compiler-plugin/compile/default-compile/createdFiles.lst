@@ -17,10 +17,13 @@ br\com\app\gym\web\utils\RequiredCheckboxValidator.class
 br\com\app\gym\web\controllers\LoginController.class
 br\com\app\gym\web\utils\GenerateValidation.class
 br\com\app\gym\web\model\Login.class
+br\com\app\gym\web\rest\impl\FaturamentoRestImpl$2.class
 br\com\app\gym\web\model\Academia.class
 br\com\app\gym\web\rest\impl\FaturamentoRestImpl.class
 br\com\app\gym\web\rest\impl\LoginRestImpl.class
 br\com\app\gym\web\model\Faturamento.class
+br\com\app\gym\web\model\HistoricoClienteModel.class
+br\com\app\gym\web\parameter\HistoricoClienteParameter.class
 br\com\app\gym\web\rest\LoginRest.class
 br\com\app\gym\web\rest\FaturamentoRest.class
 br\com\app\gym\web\service\ClienteService.class

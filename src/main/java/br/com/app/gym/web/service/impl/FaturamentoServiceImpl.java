@@ -1,6 +1,7 @@
 package br.com.app.gym.web.service.impl;
 
 import br.com.app.gym.web.model.Faturamento;
+import br.com.app.gym.web.model.HistoricoClienteModel;
 import br.com.app.gym.web.parameter.PeriodoParameter;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,6 +30,12 @@ public class FaturamentoServiceImpl implements FaturamentoService, Serializable 
     public PeriodoParameter listarFaturamento(String academiaId) throws ClientErrorException {
         
         return this.historicoTransacaoRest.listarFaturamento(academiaId);
+        
+    }
+    
+    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email) throws ClientErrorException{
+        
+        return this.historicoTransacaoRest.listarHistoricoClientes(academiaId, start, end, nome, email);
         
     }
 
