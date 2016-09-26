@@ -29,6 +29,8 @@ public class BuscaCEP {
 
         } catch (HttpStatusException w) {
 
+        }catch (Exception w) {
+
         }
         return CEP;
     }
@@ -49,6 +51,8 @@ public class BuscaCEP {
         } catch (SocketTimeoutException e) {
 
         } catch (HttpStatusException w) {
+
+        }catch (Exception w) {
 
         }
         return CEP;
@@ -71,6 +75,8 @@ public class BuscaCEP {
 
         } catch (HttpStatusException w) {
 
+        }catch (Exception w) {
+
         }
         return CEP;
     }
@@ -91,6 +97,8 @@ public class BuscaCEP {
         } catch (SocketTimeoutException e) {
 
         } catch (HttpStatusException w) {
+
+        }catch (Exception w) {
 
         }
         return CEP;
@@ -143,6 +151,8 @@ public class BuscaCEP {
         } catch (SocketTimeoutException e) {
 
         } catch (HttpStatusException w) {
+
+        }catch (Exception w) {
 
         }
         return CEP;
