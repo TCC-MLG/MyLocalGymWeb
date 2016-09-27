@@ -1,11 +1,12 @@
 package br.com.app.gym.web.presenters;
 
 import br.com.app.gym.web.model.CheckinSolicitacao;
+import java.io.Serializable;
 
 /**
  * @author Luciano
  */
-public class CheckinSolicitacaoPresenter {
+public class CheckinSolicitacaoPresenter implements Serializable {
     
     private Integer id;
     private String nome;

@@ -17,7 +17,28 @@
 
             <ui:define name="content">
                 <p:outputLabel value="Checkin" style="margin-left: 265px; font-size: 23px; color: rgb(87, 87, 87);"/>
-                <div class="mask">
+                <div class="mask">   
+                    <p:fieldset>
+                        <div class="super">
+                            <h:form id="form_dados_faturamento" >
+                                <div id="div_parametro">
+
+                                    <p:panelGrid id="drid_parametros" columns="3" style="border-bottom-width: 3px; border-bottom-style: solid;"  >
+
+                                        <p:outputLabel value="Solicitações"/>
+
+                                        <p:selectOneMenu id="console"  value="#{checkinController.checkinId}" style="width:200px">
+                                            <f:selectItems value="#{checkinController.solicitacoes}" />
+                                        </p:selectOneMenu>
+
+                                        <p:commandButton value="Atualizar" actionListener="#{checkinController.listarSolicitacao()}" update="form_dados_faturamento"/> 
+
+                                    </p:panelGrid>
+
+                                </div>
+                            </h:form>
+                        </div> 
+                    </p:fieldset>
                     <div class="colleft">
                         <p:fieldset>
                             <div class="col1">

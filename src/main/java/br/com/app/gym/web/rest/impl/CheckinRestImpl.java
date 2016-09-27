@@ -3,6 +3,7 @@ package br.com.app.gym.web.rest.impl;
 import br.com.app.gym.web.model.CheckinSolicitacao;
 import br.com.app.gym.web.presenters.CheckinSolicitacaoPresenter;
 import br.com.app.gym.web.rest.CheckinRest;
+import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import javax.ws.rs.core.GenericType;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import javax.ws.rs.core.Response;
 
-public class CheckinRestImpl implements CheckinRest{
+public class CheckinRestImpl implements CheckinRest, Serializable {
 
     private WebTarget webTarget;
     private Client client;
@@ -30,21 +31,26 @@ public class CheckinRestImpl implements CheckinRest{
         WebTarget resource = webTarget;
         resource = resource.path(MessageFormat.format("solicitacoes/{0}", new Object[]{academiaId}));
         Response response = resource.request(APPLICATION_JSON).get();
-        List<CheckinSolicitacaoPresenter> list = response.readEntity(new GenericType<List<CheckinSolicitacaoPresenter>>() {});
-        
+        List<CheckinSolicitacaoPresenter> list = response.readEntity(new GenericType<List<CheckinSolicitacaoPresenter>>() {
+        });
+
         List<CheckinSolicitacao> solicitacoes = new ArrayList<>();
-        
-        for (CheckinSolicitacaoPresenter presenter : list) {
-            
-            solicitacoes.add(presenter.convert());
-            
-        }
-        
+
+        this.converterPresenterParaModel(list, solicitacoes);
+
         return solicitacoes;
     }
 
     public void close() {
         client.close();
     }
-    
+
+    private void converterPresenterParaModel(List<CheckinSolicitacaoPresenter> list, List<CheckinSolicitacao> solicitacoes) {
+        if (list != null && !list.isEmpty()) {
+            for (CheckinSolicitacaoPresenter presenter : list) {
+                solicitacoes.add(presenter.convert());
+            }
+        }
+    }
+
 }

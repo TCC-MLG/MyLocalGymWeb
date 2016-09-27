@@ -1,9 +1,11 @@
 package br.com.app.gym.web.model;
 
+import java.io.Serializable;
+
 /**
  * @author Luciano
  */
-public class CheckinSolicitacao {
+public class CheckinSolicitacao implements Serializable {
 
     private Integer id;
     private String nome;
