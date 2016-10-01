@@ -1,6 +1,9 @@
 package br.com.app.gym.web.rest.impl;
 
+import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
+import br.com.app.gym.web.parameter.CheckinParameter;
+import br.com.app.gym.web.presenters.CheckinClientePresenter;
 import br.com.app.gym.web.presenters.CheckinSolicitacaoPresenter;
 import br.com.app.gym.web.rest.CheckinRest;
 import java.io.Serializable;
@@ -10,8 +13,10 @@ import java.util.List;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import static javax.ws.rs.client.Entity.entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import javax.ws.rs.core.Response;
 
@@ -39,6 +44,26 @@ public class CheckinRestImpl implements CheckinRest, Serializable {
         this.converterPresenterParaModel(list, solicitacoes);
 
         return solicitacoes;
+    }
+
+    public CheckinDadosCliente getDadosCliente(Integer checkinId, Integer academiaId) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(MessageFormat.format("{0}/cliente/{1}", new Object[]{checkinId, academiaId}));
+        Response response = resource.request(MediaType.APPLICATION_JSON).get();
+
+        CheckinClientePresenter presenter = response.readEntity(CheckinClientePresenter.class);
+
+        return presenter != null ? presenter.convert() : null;
+    }
+
+    public boolean liberarCliente(CheckinParameter checkinParameter) throws ClientErrorException {
+        Response response = webTarget.path("liberar")
+                .request(MediaType.APPLICATION_JSON)
+                .post(entity(checkinParameter, MediaType.APPLICATION_JSON), Response.class);
+
+        Boolean liberado = response.readEntity(Boolean.class);
+        
+        return liberado;
     }
 
     public void close() {

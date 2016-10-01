@@ -23,15 +23,18 @@
                             <h:form id="form_dados_faturamento" >
                                 <div id="div_parametro">
 
-                                    <p:panelGrid id="drid_parametros" columns="3" style="border-bottom-width: 3px; border-bottom-style: solid;"  >
+                                    <p:panelGrid id="drid_parametros" columns="4" style="border-bottom-width: 3px; border-bottom-style: solid;"  >
 
                                         <p:outputLabel value="Solicitações"/>
 
                                         <p:selectOneMenu id="console"  value="#{checkinController.checkinId}" style="width:200px">
+                                            <f:selectItem itemLabel="Selecione" />
                                             <f:selectItems value="#{checkinController.solicitacoes}" />
                                         </p:selectOneMenu>
 
                                         <p:commandButton value="Atualizar" actionListener="#{checkinController.listarSolicitacao()}" update="form_dados_faturamento"/> 
+
+                                        <p:commandButton value="Consultar" actionListener="#{checkinController.buscarCliente()}" update="form_dados_usuario"/> 
 
                                     </p:panelGrid>
 
@@ -56,16 +59,16 @@
                                             </f:facet>
 
                                             <p:outputLabel value="Nome"/>
-                                            <p:inputText value="" disabled="true"/>
-
-                                            <p:outputLabel value="RG"/>
-                                            <p:inputText value="" disabled="true"/>
+                                            <p:inputText value="#{checkinController.dadosCliente.nome}" disabled="true"/>
 
                                             <p:outputLabel value="CPF"/>
-                                            <p:inputText value="" disabled="true"/>
+                                            <p:inputText value="#{checkinController.dadosCliente.cpf}" disabled="true"/>
+
+                                            <p:outputLabel value="E-mail"/>
+                                            <p:inputText value="#{checkinController.dadosCliente.email}" disabled="true"/>
 
                                             <p:outputLabel value="Exame válido"/>
-                                            <p:inputText value="" disabled="true"/>
+                                            <p:inputText value="Valido" disabled="true"/>
 
                                         </p:panelGrid>
                                     </h:form>
@@ -78,9 +81,9 @@
                         <h:form id="form_botao">
                             <p:panelGrid columns="2" >
 
-                                <p:commandButton value="Recusar" />
+                                <p:commandButton value="Recusar" actionListener="#{checkinController.recusar()}" />
 
-                                <p:commandButton value="Liberar" />
+                                <p:commandButton value="Liberar" actionListener="#{checkinController.liberar()}" />
 
                             </p:panelGrid>
                         </h:form>
