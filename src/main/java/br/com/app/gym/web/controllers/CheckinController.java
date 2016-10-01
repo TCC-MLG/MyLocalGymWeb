@@ -12,6 +12,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import org.primefaces.context.RequestContext;
 
 /**
  * @author Luciano
@@ -55,13 +56,34 @@ public class CheckinController implements Serializable {
 
     public void liberar() {
 
-        this.liberar(true);
+        boolean liberado = this.liberar(true);
 
+        if (liberado) {
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('liber').show()");
+        } else {
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('falh').show()");
+        }
+
+        this.solicitacoes = new HashMap<>();
+        this.listarSolicitacao();
+
+    }
+
+    public void recusar() {
+
+        boolean liberado = this.liberar(false);
+
+        if (liberado) {
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('recus').show()");
+        }
     }
 
     private boolean liberar(boolean liberado) {
 
-        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getId(), this.buscarIdSessao(), liberado, 1);
+        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, 1);
 
         return result;
     }
@@ -73,12 +95,6 @@ public class CheckinController implements Serializable {
         int idUsuarioSession = (int) session.getAttribute("ID_USUARIO");
 
         return idUsuarioSession;
-
-    }
-
-    public void recusar() {
-
-        this.liberar(false);
 
     }
 

@@ -86,6 +86,36 @@
                                 <p:commandButton value="Liberar" actionListener="#{checkinController.liberar()}" />
 
                             </p:panelGrid>
+
+                            <p:dialog id="liberado"  header="Sucesso!" widgetVar="liber" minHeight="40">
+                                <p:panelGrid columns="1">
+                                    <h:outputText value="Cliente liberado" />
+                                    <h:commandButton  styleClass="btn btn-sm btn-success active offset" 
+                                                      style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
+                                                      value="OK"/>
+                                </p:panelGrid>
+                            </p:dialog>
+
+                            <p:dialog id="recusado"  header="Não liberado" widgetVar="recus" minHeight="40">
+                                <p:panelGrid columns="1">
+                                    <h:outputText value="Cliente não foi liberado" />
+                                    <h:commandButton  styleClass="btn btn-sm btn-success active offset" 
+                                                      style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
+                                                      value="OK"/>
+                                </p:panelGrid>
+                            </p:dialog>
+
+                            <p:dialog id="falha"  header="Erro!" widgetVar="falh" minHeight="40">
+                                <p:panelGrid columns="1">
+                                    <h:outputText value="Falha ao liberar o cliente, por favor tente novamente." />
+                                    <p:commandButton  styleClass="btn btn-sm btn-success active offset" 
+                                                      style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
+                                                      value="OK"
+                                                      update="form_dados_faturamento"/>
+                                </p:panelGrid>
+                            </p:dialog>
+
+
                         </h:form>
                     </div>
                 </div>
