@@ -1,12 +1,13 @@
 package br.com.app.gym.web.parameter;
 
 import br.com.app.gym.web.model.Faturamento;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * @author Luciano
  */
-public class FaturamentoParameter {
+public class FaturamentoParameter implements Serializable {
 
     private String nome;
 
