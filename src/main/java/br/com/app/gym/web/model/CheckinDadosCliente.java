@@ -12,7 +12,7 @@ public class CheckinDadosCliente implements Serializable {
     private Integer clienteId;
     private String nome;
     private String email;
-    private Integer cpf;
+    private Long cpf;
 
     public Integer getId() {
         return id;
@@ -54,11 +54,11 @@ public class CheckinDadosCliente implements Serializable {
         this.email = email;
     }
 
-    public Integer getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
