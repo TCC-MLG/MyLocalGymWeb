@@ -3,14 +3,17 @@ package br.com.app.gym.web.controllers;
 import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
 import br.com.app.gym.web.service.CheckinService;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -21,7 +24,7 @@ import org.primefaces.model.StreamedContent;
 /**
  * @author Luciano
  */
-@SessionScoped
+@ViewScoped
 @Named("checkinController")
 public class CheckinController implements Serializable {
 
@@ -35,6 +38,8 @@ public class CheckinController implements Serializable {
     private Integer checkinId;
 
     private StreamedContent image;
+    
+    private boolean aparecer = false;
 
     @PostConstruct
     public void init() {
@@ -66,6 +71,13 @@ public class CheckinController implements Serializable {
     }
 
     public StreamedContent getImageFromDB(byte[] array) throws IOException {
+
+        BufferedImage img = ImageIO.read(new ByteArrayInputStream(array));
+
+        ImageIO.write(img, "jpg", new File(
+                "C:/Users/Luciano/workspace/mylocalgymweb/src/main/webapp/resources/img/new-darksouls.jpg"));
+        
+        this.aparecer = true;
 
         return new DefaultStreamedContent(new ByteArrayInputStream(array),
                 "image/png");
@@ -102,6 +114,9 @@ public class CheckinController implements Serializable {
 
         boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, 1);
 
+        this.dadosCliente = new CheckinDadosCliente();
+        this.aparecer = false;
+        
         return result;
     }
 
@@ -141,5 +156,9 @@ public class CheckinController implements Serializable {
 
     public StreamedContent getImage() {
         return image;
+    }
+
+    public boolean isAparecer() {
+        return aparecer;
     }
 }

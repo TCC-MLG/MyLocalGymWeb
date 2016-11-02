@@ -47,14 +47,14 @@
                             <div class="col1">
                                 <div>
                                     <h:form id="form_imagem_usuario">
-                                        <p:graphicImage value="#{checkinController.image}" width="150px" height="150px"/>
+                                        <h:graphicImage name="img/new-darksouls.jpg" style="margin-left: 50px;" width="350px" height="350px" rendered="#{checkinController.aparecer}"/>
                                     </h:form>
                                 </div>
                             </div>
                             <div class="col2">
                                 <div>
                                     <h:form id="form_dados_usuario">
-                                        <p:panelGrid id="drid_entrada" columns="2">
+                                        <p:panelGrid id="drid_entrada" columns="2" rendered="#{checkinController.aparecer}">
 
                                             <f:facet name="header">
                                                 <h:outputText value="Dados do usuário" />
@@ -92,9 +92,10 @@
                             <p:dialog id="liberado"  header="Sucesso!" widgetVar="liber" minHeight="40">
                                 <p:panelGrid columns="1">
                                     <h:outputText value="Cliente liberado" />
-                                    <h:commandButton  styleClass="btn btn-sm btn-success active offset" 
+                                    <p:commandButton  styleClass="btn btn-sm btn-success active offset" 
                                                       style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
-                                                      value="OK"/>
+                                                      value="OK" ajax="false"/>
+
                                 </p:panelGrid>
                             </p:dialog>
 
