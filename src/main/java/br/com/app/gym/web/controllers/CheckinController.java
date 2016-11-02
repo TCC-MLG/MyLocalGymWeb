@@ -3,8 +3,6 @@ package br.com.app.gym.web.controllers;
 import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
 import br.com.app.gym.web.service.CheckinService;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -13,12 +11,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
 import org.primefaces.context.RequestContext;
-import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 /**
@@ -38,8 +35,11 @@ public class CheckinController implements Serializable {
     private Integer checkinId;
 
     private StreamedContent image;
-    
+
     private boolean aparecer = false;
+
+    private File file;
+    private String myImageBase64;
 
     @PostConstruct
     public void init() {
@@ -65,22 +65,13 @@ public class CheckinController implements Serializable {
 
         byte[] array = this.dadosCliente.getFoto();
 
-        this.image = this.getImageFromDB(array);
-
-        //       BufferedImage img = ImageIO.read(new ByteArrayInputStream(array));
+        this.getImageFromDB(array);
     }
 
-    public StreamedContent getImageFromDB(byte[] array) throws IOException {
+    public void getImageFromDB(byte[] array) throws IOException {
 
-        BufferedImage img = ImageIO.read(new ByteArrayInputStream(array));
-
-        ImageIO.write(img, "jpg", new File(
-                "C:/Users/Luciano/workspace/mylocalgymweb/src/main/webapp/resources/img/new-darksouls.jpg"));
-        
+        this.myImageBase64 = "data:" + "jpg" + ";base64," + DatatypeConverter.printBase64Binary(array);
         this.aparecer = true;
-
-        return new DefaultStreamedContent(new ByteArrayInputStream(array),
-                "image/png");
     }
 
     public void liberar() {
@@ -116,7 +107,7 @@ public class CheckinController implements Serializable {
 
         this.dadosCliente = new CheckinDadosCliente();
         this.aparecer = false;
-        
+
         return result;
     }
 
@@ -160,5 +151,13 @@ public class CheckinController implements Serializable {
 
     public boolean isAparecer() {
         return aparecer;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public String getMyImageBase64() {
+        return myImageBase64;
     }
 }

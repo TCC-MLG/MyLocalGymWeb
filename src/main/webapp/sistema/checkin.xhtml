@@ -21,7 +21,7 @@
                     <p:fieldset>
                         <div class="super">
                             <h:form id="form_dados_faturamento" >
-                                <div id="div_parametro">
+                                <div id="div_parametro" style="margin-top: 2px;">
 
                                     <p:panelGrid id="drid_parametros" columns="4" style="border-bottom-width: 3px; border-bottom-style: solid;"  >
 
@@ -47,13 +47,15 @@
                             <div class="col1">
                                 <div>
                                     <h:form id="form_imagem_usuario">
-                                        <h:graphicImage name="img/new-darksouls.jpg" style="margin-left: 50px;" width="350px" height="350px" rendered="#{checkinController.aparecer}"/>
+                                        <p:panel rendered="#{checkinController.aparecer}">
+                                            <img src="${checkinController.myImageBase64}" alt="" width="300px" height="300"/>
+                                        </p:panel>
                                     </h:form>
                                 </div>
                             </div>
                             <div class="col2">
                                 <div>
-                                    <h:form id="form_dados_usuario">
+                                    <h:form id="form_dados_usuario" style="margin-left: 56px;margin-top: 2px;">
                                         <p:panelGrid id="drid_entrada" columns="2" rendered="#{checkinController.aparecer}">
 
                                             <f:facet name="header">
@@ -94,7 +96,7 @@
                                     <h:outputText value="Cliente liberado" />
                                     <p:commandButton  styleClass="btn btn-sm btn-success active offset" 
                                                       style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
-                                                      value="OK" ajax="false"/>
+                                                      value="OK" update="form_imagem_usuario" ajax="false"/>
 
                                 </p:panelGrid>
                             </p:dialog>
