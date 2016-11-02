@@ -13,6 +13,8 @@ public class CheckinDadosCliente implements Serializable {
     private String nome;
     private String email;
     private Long cpf;
+    private byte[] foto;
+    private byte[] exame;
 
     public Integer getId() {
         return id;
@@ -60,6 +62,22 @@ public class CheckinDadosCliente implements Serializable {
 
     public void setCpf(Long cpf) {
         this.cpf = cpf;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public byte[] getExame() {
+        return exame;
+    }
+
+    public void setExame(byte[] exame) {
+        this.exame = exame;
     }
 
 }

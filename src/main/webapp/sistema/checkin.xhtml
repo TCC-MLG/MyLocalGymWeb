@@ -34,7 +34,7 @@
 
                                         <p:commandButton value="Atualizar" actionListener="#{checkinController.listarSolicitacao()}" update="form_dados_faturamento"/> 
 
-                                        <p:commandButton value="Consultar" actionListener="#{checkinController.buscarCliente()}" update="form_dados_usuario"/> 
+                                        <p:commandButton value="Consultar" actionListener="#{checkinController.buscarCliente()}" update="form_dados_usuario, form_imagem_usuario"/> 
 
                                     </p:panelGrid>
 
@@ -46,7 +46,9 @@
                         <p:fieldset>
                             <div class="col1">
                                 <div>
-                                    <h:graphicImage value=""/>
+                                    <h:form id="form_imagem_usuario">
+                                        <p:graphicImage value="#{checkinController.image}" width="150px" height="150px"/>
+                                    </h:form>
                                 </div>
                             </div>
                             <div class="col2">

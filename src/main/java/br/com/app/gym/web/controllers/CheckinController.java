@@ -3,21 +3,25 @@ package br.com.app.gym.web.controllers;
 import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
 import br.com.app.gym.web.service.CheckinService;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 /**
  * @author Luciano
  */
-@ViewScoped
+@SessionScoped
 @Named("checkinController")
 public class CheckinController implements Serializable {
 
@@ -29,6 +33,8 @@ public class CheckinController implements Serializable {
     private CheckinDadosCliente dadosCliente;
 
     private Integer checkinId;
+
+    private StreamedContent image;
 
     @PostConstruct
     public void init() {
@@ -48,10 +54,21 @@ public class CheckinController implements Serializable {
 
     }
 
-    public void buscarCliente() {
+    public void buscarCliente() throws IOException {
 
         this.dadosCliente = this.checkinService.getDadosCliente(this.checkinId, 1);
 
+        byte[] array = this.dadosCliente.getFoto();
+
+        this.image = this.getImageFromDB(array);
+
+        //       BufferedImage img = ImageIO.read(new ByteArrayInputStream(array));
+    }
+
+    public StreamedContent getImageFromDB(byte[] array) throws IOException {
+
+        return new DefaultStreamedContent(new ByteArrayInputStream(array),
+                "image/png");
     }
 
     public void liberar() {
@@ -122,4 +139,7 @@ public class CheckinController implements Serializable {
         this.dadosCliente = dadosCliente;
     }
 
+    public StreamedContent getImage() {
+        return image;
+    }
 }
