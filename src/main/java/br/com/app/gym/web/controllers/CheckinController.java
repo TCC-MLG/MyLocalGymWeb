@@ -3,6 +3,7 @@ package br.com.app.gym.web.controllers;
 import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
 import br.com.app.gym.web.service.CheckinService;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import javax.xml.bind.DatatypeConverter;
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 /**
@@ -34,11 +36,10 @@ public class CheckinController implements Serializable {
 
     private Integer checkinId;
 
-    private StreamedContent image;
+    private String image;
 
     private boolean aparecer = false;
 
-    private File file;
     private String myImageBase64;
 
     @PostConstruct
@@ -51,7 +52,7 @@ public class CheckinController implements Serializable {
 
     public void listarSolicitacao() {
 
-        List<CheckinSolicitacao> checkinSolicitacoes = this.checkinService.listarSolicitacao("1");
+        List<CheckinSolicitacao> checkinSolicitacoes = this.checkinService.listarSolicitacao(this.buscarIdSessao().toString());
 
         for (CheckinSolicitacao checkin : checkinSolicitacoes) {
             this.getSolicitacoes().put(checkin.getNome(), checkin.getId());
@@ -61,7 +62,7 @@ public class CheckinController implements Serializable {
 
     public void buscarCliente() throws IOException {
 
-        this.dadosCliente = this.checkinService.getDadosCliente(this.checkinId, 1);
+        this.dadosCliente = this.checkinService.getDadosCliente(this.checkinId, this.buscarIdSessao());
 
         byte[] array = this.dadosCliente.getFoto();
 
@@ -70,8 +71,27 @@ public class CheckinController implements Serializable {
 
     public void getImageFromDB(byte[] array) throws IOException {
 
-        this.myImageBase64 = "data:" + "jpg" + ";base64," + DatatypeConverter.printBase64Binary(array);
-        this.aparecer = true;
+        if (array != null) {
+
+            this.myImageBase64 = "data:" + "jpg" + ";base64," + DatatypeConverter.printBase64Binary(array);
+            this.aparecer = true;
+
+        }
+
+    }
+
+    public void abrirExame() {
+        byte[] array = this.dadosCliente.getExame();
+
+        if (array != null) {
+            this.image = this.myImageBase64 = "data:" + "jpg" + ";base64," + DatatypeConverter.printBase64Binary(array);
+
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('exame').show()");
+        } else {
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('exame_nao').show()");
+        }
     }
 
     public void liberar() {
@@ -145,16 +165,12 @@ public class CheckinController implements Serializable {
         this.dadosCliente = dadosCliente;
     }
 
-    public StreamedContent getImage() {
+    public String getImage() {
         return image;
     }
 
     public boolean isAparecer() {
         return aparecer;
-    }
-
-    public File getFile() {
-        return file;
     }
 
     public String getMyImageBase64() {
