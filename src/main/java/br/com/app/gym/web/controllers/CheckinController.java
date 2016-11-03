@@ -2,9 +2,9 @@ package br.com.app.gym.web.controllers;
 
 import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
+import br.com.app.gym.web.model.ServicoModel;
 import br.com.app.gym.web.service.CheckinService;
-import java.io.ByteArrayInputStream;
-import java.io.File;
+import br.com.app.gym.web.service.ServicoService;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -17,8 +17,6 @@ import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import javax.xml.bind.DatatypeConverter;
 import org.primefaces.context.RequestContext;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
 
 /**
  * @author Luciano
@@ -29,6 +27,9 @@ public class CheckinController implements Serializable {
 
     @Inject
     private CheckinService checkinService;
+
+    @Inject
+    private ServicoService servicoService;
 
     private HashMap<String, Integer> solicitacoes;
 
@@ -123,7 +124,14 @@ public class CheckinController implements Serializable {
 
     private boolean liberar(boolean liberado) {
 
-        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, 1);
+        List<ServicoModel> sms = this.servicoService.listarTransacoesPorPeriodo(this.buscarIdSessao());
+
+        if (sms == null) {
+            
+            return false;
+            
+        }
+        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, sms.get(0).getId());
 
         this.dadosCliente = new CheckinDadosCliente();
         this.aparecer = false;

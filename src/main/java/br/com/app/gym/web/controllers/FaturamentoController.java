@@ -56,7 +56,7 @@ public class FaturamentoController implements Serializable {
 
     public void listarFaturamento() {
 
-        this.periodoParameter = this.faturamentoService.listarFaturamento("1");
+        this.periodoParameter = this.faturamentoService.listarFaturamento(buscarIdSessao().toString());
 
     }
 

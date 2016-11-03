@@ -46,6 +46,7 @@ public class CheckinRestImpl implements CheckinRest, Serializable {
         return solicitacoes;
     }
 
+    @Override
     public CheckinDadosCliente getDadosCliente(Integer checkinId, Integer academiaId) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(MessageFormat.format("{0}/cliente/{1}", new Object[]{checkinId, academiaId}));
@@ -56,6 +57,7 @@ public class CheckinRestImpl implements CheckinRest, Serializable {
         return presenter != null ? presenter.convert() : null;
     }
 
+    @Override
     public boolean liberarCliente(CheckinParameter checkinParameter) throws ClientErrorException {
         Response response = webTarget.path("liberar")
                 .request(MediaType.APPLICATION_JSON)
