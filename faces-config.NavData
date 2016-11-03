@@ -3,10 +3,10 @@
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
         <Node id="sistema/template/footer.xhtml" x="935" y="532" zoom="true"/>
-        <Node id="sistema/checkIn.xhtml" x="582" y="267" zoom="true"/>
         <Node id="site/index.xhtml" x="344" y="265" zoom="false"/>
-        <Node id="sistema/template/top_bar.xhtml" x="918" y="495" zoom="true"/>
         <Node id="sistema/template/search_bar.xhtml" x="877" y="348" zoom="false"/>
+        <Node id="sistema/template/top_bar.xhtml" x="918" y="495" zoom="true"/>
+        <Node id="sistema/checkin.xhtml" x="150" y="150" zoom="true"/>
         <Node id="site/template/template.xhtml" x="20" y="516" zoom="false"/>
         <Node id="site/template/top_bar.xhtml" x="26" y="557" zoom="true"/>
         <Node id="site/template/footer.xhtml" x="30" y="478" zoom="true"/>
@@ -14,8 +14,8 @@
         <Node id="sistema/historico/historico.xhtml" x="859" y="18" zoom="true"/>
         <Node id="sistema/template/template.xhtml" x="919" y="573" zoom="true"/>
         <Node id="site/template/search_bar.xhtml" x="24" y="603" zoom="true"/>
-        <Node id="sistema/faturamento/faturamento.xhtml" x="868" y="443" zoom="true"/>
         <Node id="site/cadastro.xhtml" x="59" y="380" zoom="true"/>
+        <Node id="sistema/faturamento/faturamento.xhtml" x="868" y="443" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

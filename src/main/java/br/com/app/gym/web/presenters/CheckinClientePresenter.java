@@ -12,7 +12,9 @@ public class CheckinClientePresenter {
     private Integer clienteId;
     private String nome;
     private String email;
-    private Integer cpf;
+    private Long cpf;
+    private byte[] foto;
+    private byte[] exame;
 
     public CheckinDadosCliente convert() {
 
@@ -24,6 +26,8 @@ public class CheckinClientePresenter {
         cliente.setEmail(this.email);
         cliente.setNome(this.nome);
         cliente.setSolicitacaoCliente(this.solicitacaoCliente);
+        cliente.setFoto(this.foto);
+        cliente.setExame(this.exame);
 
         return cliente;
 
@@ -69,12 +73,28 @@ public class CheckinClientePresenter {
         this.email = email;
     }
 
-    public Integer getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public byte[] getExame() {
+        return exame;
+    }
+
+    public void setExame(byte[] exame) {
+        this.exame = exame;
     }
 
 }

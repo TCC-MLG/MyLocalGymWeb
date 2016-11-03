@@ -2,7 +2,10 @@ package br.com.app.gym.web.controllers;
 
 import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
+import br.com.app.gym.web.model.ServicoModel;
 import br.com.app.gym.web.service.CheckinService;
+import br.com.app.gym.web.service.ServicoService;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +15,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -24,11 +28,20 @@ public class CheckinController implements Serializable {
     @Inject
     private CheckinService checkinService;
 
+    @Inject
+    private ServicoService servicoService;
+
     private HashMap<String, Integer> solicitacoes;
 
     private CheckinDadosCliente dadosCliente;
 
     private Integer checkinId;
+
+    private String image;
+
+    private boolean aparecer = false;
+
+    private String myImageBase64;
 
     @PostConstruct
     public void init() {
@@ -40,7 +53,7 @@ public class CheckinController implements Serializable {
 
     public void listarSolicitacao() {
 
-        List<CheckinSolicitacao> checkinSolicitacoes = this.checkinService.listarSolicitacao("1");
+        List<CheckinSolicitacao> checkinSolicitacoes = this.checkinService.listarSolicitacao(this.buscarIdSessao().toString());
 
         for (CheckinSolicitacao checkin : checkinSolicitacoes) {
             this.getSolicitacoes().put(checkin.getNome(), checkin.getId());
@@ -48,10 +61,38 @@ public class CheckinController implements Serializable {
 
     }
 
-    public void buscarCliente() {
+    public void buscarCliente() throws IOException {
 
-        this.dadosCliente = this.checkinService.getDadosCliente(this.checkinId, 1);
+        this.dadosCliente = this.checkinService.getDadosCliente(this.checkinId, this.buscarIdSessao());
 
+        byte[] array = this.dadosCliente.getFoto();
+
+        this.getImageFromDB(array);
+    }
+
+    public void getImageFromDB(byte[] array) throws IOException {
+
+        if (array != null) {
+
+            this.myImageBase64 = "data:" + "jpg" + ";base64," + DatatypeConverter.printBase64Binary(array);
+            this.aparecer = true;
+
+        }
+
+    }
+
+    public void abrirExame() {
+        byte[] array = this.dadosCliente.getExame();
+
+        if (array != null) {
+            this.image = this.myImageBase64 = "data:" + "jpg" + ";base64," + DatatypeConverter.printBase64Binary(array);
+
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('exame').show()");
+        } else {
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('exame_nao').show()");
+        }
     }
 
     public void liberar() {
@@ -83,7 +124,17 @@ public class CheckinController implements Serializable {
 
     private boolean liberar(boolean liberado) {
 
-        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, 1);
+        List<ServicoModel> sms = this.servicoService.listarTransacoesPorPeriodo(this.buscarIdSessao());
+
+        if (sms == null) {
+            
+            return false;
+            
+        }
+        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, sms.get(0).getId());
+
+        this.dadosCliente = new CheckinDadosCliente();
+        this.aparecer = false;
 
         return result;
     }
@@ -122,4 +173,15 @@ public class CheckinController implements Serializable {
         this.dadosCliente = dadosCliente;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public boolean isAparecer() {
+        return aparecer;
+    }
+
+    public String getMyImageBase64() {
+        return myImageBase64;
+    }
 }

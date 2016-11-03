@@ -21,11 +21,11 @@
                     <p:fieldset>
                         <div class="super">
                             <h:form id="form_dados_faturamento" >
-                                <div id="div_parametro">
+                                <div id="div_parametro" style="margin-top: 2px;">
 
                                     <p:panelGrid id="drid_parametros" columns="4" style="border-bottom-width: 3px; border-bottom-style: solid;"  >
 
-                                        <p:outputLabel value="Solicitações"/>
+                                        <p:outputLabel value="Solicitações: "/>
 
                                         <p:selectOneMenu id="console"  value="#{checkinController.checkinId}" style="width:200px">
                                             <f:selectItem itemLabel="Selecione" />
@@ -34,7 +34,7 @@
 
                                         <p:commandButton value="Atualizar" actionListener="#{checkinController.listarSolicitacao()}" update="form_dados_faturamento"/> 
 
-                                        <p:commandButton value="Consultar" actionListener="#{checkinController.buscarCliente()}" update="form_dados_usuario"/> 
+                                        <p:commandButton value="Consultar" actionListener="#{checkinController.buscarCliente()}" update="form_dados_usuario, form_imagem_usuario"/> 
 
                                     </p:panelGrid>
 
@@ -46,29 +46,33 @@
                         <p:fieldset>
                             <div class="col1">
                                 <div>
-                                    <h:graphicImage value=""/>
+                                    <h:form id="form_imagem_usuario">
+                                        <p:panel rendered="#{checkinController.aparecer}">
+                                            <img src="${checkinController.myImageBase64}" alt="" width="300px" height="300"/>
+                                        </p:panel>
+                                    </h:form>
                                 </div>
                             </div>
                             <div class="col2">
                                 <div>
-                                    <h:form id="form_dados_usuario">
-                                        <p:panelGrid id="drid_entrada" columns="2">
+                                    <h:form id="form_dados_usuario" style="margin-left: 56px;margin-top: 2px;">
+                                        <p:panelGrid id="drid_entrada" columns="2" rendered="#{checkinController.aparecer}">
 
                                             <f:facet name="header">
                                                 <h:outputText value="Dados do usuário" />
                                             </f:facet>
 
-                                            <p:outputLabel value="Nome"/>
+                                            <p:outputLabel value="Nome: "/>
                                             <p:inputText value="#{checkinController.dadosCliente.nome}" disabled="true"/>
 
-                                            <p:outputLabel value="CPF"/>
+                                            <p:outputLabel value="CPF: "/>
                                             <p:inputText value="#{checkinController.dadosCliente.cpf}" disabled="true"/>
 
-                                            <p:outputLabel value="E-mail"/>
+                                            <p:outputLabel value="E-mail: "/>
                                             <p:inputText value="#{checkinController.dadosCliente.email}" disabled="true"/>
 
-                                            <p:outputLabel value="Exame válido"/>
-                                            <p:inputText value="Valido" disabled="true"/>
+                                            <p:outputLabel value="Exame médico:"/>
+                                            <p:commandButton actionListener="#{checkinController.abrirExame()}" update="form_botao" value="Visualizar"/>
 
                                         </p:panelGrid>
                                     </h:form>
@@ -90,9 +94,10 @@
                             <p:dialog id="liberado"  header="Sucesso!" widgetVar="liber" minHeight="40">
                                 <p:panelGrid columns="1">
                                     <h:outputText value="Cliente liberado" />
-                                    <h:commandButton  styleClass="btn btn-sm btn-success active offset" 
+                                    <p:commandButton  styleClass="btn btn-sm btn-success active offset" 
                                                       style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
-                                                      value="OK"/>
+                                                      value="OK" update="form_imagem_usuario" ajax="false"/>
+
                                 </p:panelGrid>
                             </p:dialog>
 
@@ -115,6 +120,23 @@
                                 </p:panelGrid>
                             </p:dialog>
 
+                            <p:dialog id="exame"  header="Exame médico" widgetVar="exame" minHeight="40" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+                                <f:facet name="header">
+                                    <h:outputText value="Exame médico" />
+                                </f:facet>
+                                <img src="${checkinController.myImageBase64}" alt="" width="300px" height="300"/>
+                            </p:dialog>
+
+                            <p:dialog id="exame_nao"  header="Exame médico" widgetVar="exame_nao" minHeight="40">
+                                <p:panelGrid columns="1">
+                                    <h:outputText value="Cliente não possui exame médico" />
+                                    <p:commandButton  styleClass="btn btn-sm btn-success active offset" 
+                                                      style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
+                                                      value="OK"
+                                                      ajax="false"/>
+                                </p:panelGrid>
+                            </p:dialog>
 
                         </h:form>
                     </div>
