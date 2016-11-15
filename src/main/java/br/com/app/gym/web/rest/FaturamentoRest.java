@@ -15,6 +15,6 @@ public interface FaturamentoRest {
 
     public PeriodoParameter listarFaturamento(String academiaId) throws ClientErrorException;
     
-    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email, Integer cpf) throws ClientErrorException;
+    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email, Long cpf) throws ClientErrorException;
 
 }

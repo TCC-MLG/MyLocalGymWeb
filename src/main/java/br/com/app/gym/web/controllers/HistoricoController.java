@@ -37,7 +37,6 @@ public class HistoricoController implements Serializable{
 
         this.dadosCliente = new HistoricoClienteModel();
         this.clientesList = new ArrayList<>();
-
     }
 
     public void listarHistorico() {
@@ -45,7 +44,6 @@ public class HistoricoController implements Serializable{
         String clienteId = this.buscarIdSessao().toString();
 
         this.clientesList = this.faturamentoService.listarHistoricoClientes(clienteId, this.startDate, this.endDate, this.dadosCliente);
-
     }
 
     public Integer buscarIdSessao() {
@@ -55,7 +53,6 @@ public class HistoricoController implements Serializable{
         int idUsuarioSession = (int) session.getAttribute("ID_USUARIO");
 
         return idUsuarioSession;
-
     }
 
     public HistoricoClienteModel getDadosCliente() {

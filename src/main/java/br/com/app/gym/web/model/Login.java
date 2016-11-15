@@ -2,25 +2,28 @@ package br.com.app.gym.web.model;
 
 import java.io.Serializable;
 
-public class Login implements Serializable{
+public class Login implements Serializable {
 
-	private String usuario;
-	private String senha;
+    private String usuario;
+    private String senha;
 
-	public String getUsuario() {
-		return usuario;
-	}
+    public String getUsuario() {
+        return usuario;
+    }
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
+    public void setUsuario(String usuario) {
 
-	public String getSenha() {
-		return senha;
-	}
+        String cnpjString = usuario.replace(".", "").replace("/", "").replace("-", "");
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+        this.usuario = cnpjString;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
 }
