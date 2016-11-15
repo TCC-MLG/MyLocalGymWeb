@@ -4,6 +4,7 @@ import br.com.app.gym.web.model.Faturamento;
 import br.com.app.gym.web.parameter.PeriodoParameter;
 import br.com.app.gym.web.service.FaturamentoService;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -67,7 +68,13 @@ public class FaturamentoController implements Serializable {
         int idUsuarioSession = (int) session.getAttribute("ID_USUARIO");
 
         return idUsuarioSession;
-
+    }
+    
+    public String titleMovimento(){
+        
+        String data = LocalDate.now().toString();
+        
+        return "Movimento: "+data+"";
     }
 
     public String getCity() {

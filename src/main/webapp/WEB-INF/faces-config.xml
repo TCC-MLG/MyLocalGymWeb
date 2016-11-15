@@ -41,6 +41,10 @@
             <from-outcome>go_faturamento</from-outcome>
             <to-view-id>/sistema/faturamento/faturamento.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
@@ -56,6 +60,10 @@
         <navigation-case>
             <from-outcome>go_faturamento</from-outcome>
             <to-view-id>/sistema/faturamento/faturamento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -73,6 +81,10 @@
             <from-outcome>go_faturamento</from-outcome>
             <to-view-id>/sistema/faturamento/faturamento.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/sistema/faturamento/faturamento.xhtml</from-view-id>
@@ -88,5 +100,10 @@
             <from-outcome>go_historico</from-outcome>
             <to-view-id>/sistema/historico/historico.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
+
 </faces-config>
