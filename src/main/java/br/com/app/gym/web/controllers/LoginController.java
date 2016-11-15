@@ -40,7 +40,7 @@ public class LoginController implements Serializable {
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.setAttribute("ID_USUARIO", academia.getId());
 
-            return "principal";
+            return "go_principal";
 
         } else {
 
