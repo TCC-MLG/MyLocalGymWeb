@@ -6,6 +6,7 @@ br\com\app\gym\web\presenters\CheckinSolicitacaoPresenter.class
 br\com\app\gym\web\rest\CheckinRest.class
 br\com\app\gym\web\controllers\PessoaJuridicaController.class
 br\com\app\gym\web\model\PessoaJuridica.class
+br\com\app\gym\web\presenters\AlterarDadosAcademiaPresenter.class
 br\com\app\gym\web\parameter\PeriodoParameter.class
 br\com\app\gym\web\utils\ConfirmPasswordValidator.class
 br\com\app\gym\web\controllers\FaturamentoController.class
@@ -14,6 +15,7 @@ br\com\app\gym\web\rest\impl\AcademiaRestImpl.class
 br\com\app\gym\web\parameter\CheckinParameter.class
 br\com\app\gym\web\rest\ServicoRest.class
 br\com\app\gym\web\controllers\LoginController.class
+br\com\app\gym\web\parameter\AlterarAcademiaParameter.class
 br\com\app\gym\web\presenters\ServicoPresenter.class
 br\com\app\gym\web\utils\GenerateValidation.class
 br\com\app\gym\web\presenters\CheckinClientePresenter.class

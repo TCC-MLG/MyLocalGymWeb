@@ -11,6 +11,7 @@ C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\i
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\CheckinRest.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\enums\GenerateValidation.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\impl\AcademiaRestImpl.java
+C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\presenters\AlterarDadosAcademiaPresenter.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\ServicoRest.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\ClienteService.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\HistoricoClienteModel.java
@@ -36,6 +37,7 @@ C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\presen
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\Login.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\impl\FaturamentoServiceImpl.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\presenters\CheckinClientePresenter.java
+C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parameter\AlterarAcademiaParameter.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\LoginRest.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\FaturamentoRest.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\impl\CheckinRestImpl.java
