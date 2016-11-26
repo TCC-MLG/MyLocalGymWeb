@@ -2,11 +2,10 @@ package br.com.app.gym.web.controllers;
 
 import br.com.app.gym.web.model.CheckinDadosCliente;
 import br.com.app.gym.web.model.CheckinSolicitacao;
-import br.com.app.gym.web.model.ServicoModel;
 import br.com.app.gym.web.service.CheckinService;
-import br.com.app.gym.web.service.ServicoService;
 import java.io.IOException;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -27,9 +26,6 @@ public class CheckinController implements Serializable {
 
     @Inject
     private CheckinService checkinService;
-
-    @Inject
-    private ServicoService servicoService;
 
     private HashMap<String, Integer> solicitacoes;
 
@@ -124,14 +120,7 @@ public class CheckinController implements Serializable {
 
     private boolean liberar(boolean liberado) {
 
-        List<ServicoModel> sms = this.servicoService.listarTransacoesPorPeriodo(this.buscarIdSessao());
-
-        if (sms == null) {
-            
-            return false;
-            
-        }
-        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, sms.get(0).getId());
+        boolean result = this.checkinService.liberarCliente(this.checkinId, this.dadosCliente.getClienteId(), this.buscarIdSessao(), liberado, buscarValorServico());
 
         this.dadosCliente = new CheckinDadosCliente();
         this.aparecer = false;
@@ -144,6 +133,16 @@ public class CheckinController implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         int idUsuarioSession = (int) session.getAttribute("ID_USUARIO");
+
+        return idUsuarioSession;
+
+    }
+
+    public BigDecimal buscarValorServico() {
+
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        BigDecimal idUsuarioSession = (BigDecimal) session.getAttribute("VALOR_SERVICO");
 
         return idUsuarioSession;
 

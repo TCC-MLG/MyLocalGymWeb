@@ -2,7 +2,6 @@ C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\contro
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\presenters\ServicoPresenter.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\controllers\CheckinController.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\presenters\CheckinSolicitacaoPresenter.java
-C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\ServicoService.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\controllers\HistoricoController.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\AcademiaRest.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\Academia.java
@@ -12,7 +11,6 @@ C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\C
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\enums\GenerateValidation.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\impl\AcademiaRestImpl.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\presenters\AlterarDadosAcademiaPresenter.java
-C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\ServicoRest.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\ClienteService.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\HistoricoClienteModel.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\CheckinService.java
@@ -26,7 +24,6 @@ C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parame
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parameter\PeriodoParameter.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\controllers\FaturamentoController.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parameter\CheckinParameter.java
-C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\impl\ServicoRestImpl.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\FaturamentoService.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\GenerateValidation.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\impl\LoginRestImpl.java
@@ -50,5 +47,4 @@ C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\impl\ClienteServiceImpl.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\CheckinSolicitacao.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\parameter\HistoricoClienteParameter.java
-C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\service\impl\ServicoServiceImpl.java
 C:\Users\Luciano\workspace\mylocalgymweb\src\main\java\br\com\app\gym\web\model\PessoaJuridica.java

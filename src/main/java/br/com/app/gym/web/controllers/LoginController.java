@@ -39,6 +39,7 @@ public class LoginController implements Serializable {
             FacesContext fc = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.setAttribute("ID_USUARIO", academia.getId());
+            session.setAttribute("VALOR_SERVICO", academia.getValorServico());
 
             return "go_principal";
 

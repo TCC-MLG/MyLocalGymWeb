@@ -1,6 +1,7 @@
 package br.com.app.gym.web.presenters;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @author Luciano
@@ -17,6 +18,7 @@ public class AlterarDadosAcademiaPresenter implements Serializable{
     private String cidade;
     private String estado;
     private Integer numero;
+    private BigDecimal valorServico;
 
     public String getRazaoSocial() {
         return razaoSocial;
@@ -96,6 +98,14 @@ public class AlterarDadosAcademiaPresenter implements Serializable{
 
     public void setNumero(Integer numero) {
         this.numero = numero;
+    }
+
+    public BigDecimal getValorServico() {
+        return valorServico;
+    }
+
+    public void setValorServico(BigDecimal valorServico) {
+        this.valorServico = valorServico;
     }
 
 }
