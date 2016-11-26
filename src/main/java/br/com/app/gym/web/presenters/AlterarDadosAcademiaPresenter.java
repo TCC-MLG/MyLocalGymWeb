@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class AlterarDadosAcademiaPresenter implements Serializable{
 
-    private String razãoSocial;
+    private String razaoSocial;
     private String email;
     private String telefone;
     private String cep;
@@ -17,8 +17,8 @@ public class AlterarDadosAcademiaPresenter implements Serializable{
     private String cidade;
     private String estado;
 
-    public String getRazãoSocial() {
-        return razãoSocial;
+    public String getRazaoSocial() {
+        return razaoSocial;
     }
 
     public String getEmail() {
@@ -51,6 +51,42 @@ public class AlterarDadosAcademiaPresenter implements Serializable{
 
     public String getEstado() {
         return estado;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }

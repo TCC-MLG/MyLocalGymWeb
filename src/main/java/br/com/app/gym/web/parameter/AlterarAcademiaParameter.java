@@ -1,12 +1,15 @@
 package br.com.app.gym.web.parameter;
 
+import br.com.app.gym.web.presenters.AlterarDadosAcademiaPresenter;
+import java.io.Serializable;
+
 /**
  *
  * @author Luciano
  */
-public class AlterarAcademiaParameter {
+public class AlterarAcademiaParameter implements Serializable{
 
-    private String razãoSocial;
+    private String razaoSocial;
     private String email;
     private String telefone;
     private String cep;
@@ -16,12 +19,28 @@ public class AlterarAcademiaParameter {
     private String cidade;
     private String estado;
 
-    public String getRazãoSocial() {
-        return razãoSocial;
+    public AlterarAcademiaParameter(AlterarDadosAcademiaPresenter dadosAcademia) {
+        
+        if (dadosAcademia != null) {
+            this.razaoSocial = dadosAcademia.getRazaoSocial();
+            this.email = dadosAcademia.getEmail();
+            this.telefone = dadosAcademia.getTelefone();
+            this.cep = dadosAcademia.getCep();
+            this.endereco = dadosAcademia.getEndereco();
+            this.complemento = dadosAcademia.getComplemento();
+            this.bairro = dadosAcademia.getBairro();
+            this.cidade = dadosAcademia.getCidade();
+            this.estado = dadosAcademia.getEstado();
+        }
+
     }
 
-    public void setRazãoSocial(String razãoSocial) {
-        this.razãoSocial = razãoSocial;
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
     }
 
     public String getEmail() {

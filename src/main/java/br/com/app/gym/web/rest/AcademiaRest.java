@@ -14,6 +14,6 @@ public interface AcademiaRest {
 
     public AlterarDadosAcademiaPresenter buscarDadosAcademia(Integer academiaId) throws ClientErrorException;
 
-    public boolean atualizarAcademia(AlterarAcademiaParameter parameter, String academiaId) throws ClientErrorException;
+    public boolean atualizarAcademia(AlterarAcademiaParameter parameter, Integer academiaId) throws ClientErrorException;
 
 }
