@@ -65,17 +65,39 @@
                                             </p:column>
 
                                         </p:dataTable>
-                                     
+
                                     </div>
                                 </h:form>
                             </div>
                             <div class="col2">
+
                                 <h:form id="form_resumo_periodo">
-                                    <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 176px; margin-top: 3px;">
+
+                                    <div id="div_corpo_servico" style="margin-right: 0px; margin-left: 62px; margin-top: 3px;">
 
                                         <p:panelGrid columns="2">
                                             <f:facet name="header">
-                                                <h:outputText value="Periodo" />
+                                                <h:outputText value="Valor do treino" />
+                                            </f:facet>
+
+                                            <h:outputText value="Valor atual: "/>
+                                            <h:outputText value="150" />
+
+                                            <h:outputText value="Valor:"/>
+                                            <p:inputNumber value="0" />
+
+                                            <p:commandButton value="Alterar" /> 
+
+                                        </p:panelGrid>
+
+                                    </div>
+                                    &nbsp;&nbsp;
+                                    &nbsp;&nbsp;
+                                    <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 62px; margin-top: 3px;">
+
+                                        <p:panelGrid columns="2">
+                                            <f:facet name="header">
+                                                <h:outputText value="Resumo por periodo" />
                                             </f:facet>
 
                                             <h:outputText value="Semanal:" />
