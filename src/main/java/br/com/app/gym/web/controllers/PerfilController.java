@@ -5,6 +5,7 @@ import br.com.app.gym.web.presenters.AlterarDadosAcademiaPresenter;
 import br.com.app.gym.web.service.ClienteService;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -53,8 +54,27 @@ public class PerfilController implements Serializable {
 
     public void valorservico() {
 
-        System.err.println("");
-        //this.valor = this.clienteService.atualizarServico(this.newValue);
+        boolean atualizado = this.clienteService.atualizarServico(this.newValue, buscarIdSessao());
+
+        if (atualizado) {
+            this.atualizarServico();
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('confirm').show()");
+
+            this.valor = newValue;
+            this.newValue = new BigDecimal(0);
+        } else {
+            RequestContext rc = RequestContext.getCurrentInstance();
+            rc.execute("PF('erro').show()");
+        }
+    }
+
+    public void atualizarServico() {
+
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        session.setAttribute("VALOR_SERVICO", this.newValue);
+
     }
 
     public Integer buscarIdSessao() {

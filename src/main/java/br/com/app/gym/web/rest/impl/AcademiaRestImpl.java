@@ -5,6 +5,7 @@ import br.com.app.gym.web.parameter.AlterarAcademiaParameter;
 import br.com.app.gym.web.presenters.AlterarDadosAcademiaPresenter;
 import br.com.app.gym.web.rest.AcademiaRest;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.text.MessageFormat;
 import javax.inject.Named;
 import javax.ws.rs.ClientErrorException;
@@ -49,7 +50,7 @@ public class AcademiaRestImpl implements AcademiaRest, Serializable {
 
     @Override
     public boolean atualizarAcademia(AlterarAcademiaParameter parameter, Integer academiaId) throws ClientErrorException {
-    
+
         Response response = webTarget.path(MessageFormat.format("{0}/alterar", new Object[]{academiaId}))
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(parameter, MediaType.APPLICATION_JSON), Response.class);
@@ -62,8 +63,22 @@ public class AcademiaRestImpl implements AcademiaRest, Serializable {
     }
 
     @Override
+    public boolean atualizarServico(BigDecimal newValue, Integer academiaId) {
+
+        Response response = webTarget.path(MessageFormat.format("{0}/alterar/servico/{1}", new Object[]{academiaId, newValue}))
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(null, MediaType.APPLICATION_JSON), Response.class);
+
+        Integer status = response.getStatus();
+
+        boolean atualizado = status.equals(NO_CONTENT.getStatusCode());
+
+        return atualizado;
+    }
+
+    @Override
     public AlterarDadosAcademiaPresenter buscarDadosAcademia(Integer academiaId) throws ClientErrorException {
-       
+
         WebTarget resource = webTarget;
         resource = resource.path(MessageFormat.format("{0}/dadosCompleto", new Object[]{academiaId}));
         Response response = resource.request(MediaType.APPLICATION_JSON).get();
