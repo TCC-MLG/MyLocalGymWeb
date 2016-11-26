@@ -16,6 +16,7 @@ public class AlterarDadosAcademiaPresenter implements Serializable{
     private String bairro;
     private String cidade;
     private String estado;
+    private Integer numero;
 
     public String getRazaoSocial() {
         return razaoSocial;
@@ -87,6 +88,14 @@ public class AlterarDadosAcademiaPresenter implements Serializable{
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
 }

@@ -54,7 +54,7 @@
 
                             <p:outputLabel value="Nº " for="numero" />
                             <p:inputText required="false" id="numero" maxlength="6"
-                                         value="" size="5" />
+                                         value="#{perfilController.dadosAcademia.numero}" size="5" />
 
                             <p:outputLabel value="Complemento " for="complemento" />
                             <p:inputText id="complemento" maxlength="30" required="false"
@@ -73,7 +73,7 @@
                                          value="#{perfilController.dadosAcademia.estado}" size="20" />
 
                             <p:commandButton value="Alterar"
-                                             actionListener="#{perfilController.alterar()}"/>
+                                             actionListener="#{perfilController.alterar()}" immediate="true" update="form_dados_cadastrais"/>
 
                         </p:panelGrid>
                     </p:fieldset>
@@ -87,10 +87,10 @@
                             <h:outputText value="Alteração foi realizado com sucesso!" />
                             <h:commandButton  styleClass="btn btn-sm btn-success active offset" 
                                               style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
-                                              value="OK"/>
+                                              value="OK" />
                         </p:panelGrid>
                     </p:dialog>
-                    
+
                 </h:form>
 
             </ui:define>
