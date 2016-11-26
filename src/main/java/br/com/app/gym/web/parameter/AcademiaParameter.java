@@ -9,7 +9,7 @@ public class AcademiaParameter {
     private String email;
     private String senha;
     private String telefone;
-    private Integer cnpj;
+    private String cnpj;
     private String estado;
     private String cidade;
     private String endereco;
@@ -44,11 +44,11 @@ public class AcademiaParameter {
         this.telefone = telefone;
     }
 
-    public Integer getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(Integer cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 

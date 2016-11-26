@@ -44,28 +44,34 @@ public class PessoaJuridicaController implements Serializable {
 
     public void cadastrar() {
 
-        if (this.pessoa.getSenha().equals(this.pessoa.getSenha2())) {
+        if (!this.campoVazio()) {
 
-            boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
+            if (this.pessoa.getSenha().equals(this.pessoa.getSenha2())) {
 
-            if (cadastrado) {
+                boolean cadastrado = this.clienteService.cadastrarCliente(pessoa);
 
-                RequestContext rc = RequestContext.getCurrentInstance();
-                rc.execute("PF('confirm').show()");
+                if (cadastrado) {
 
+                    RequestContext rc = RequestContext.getCurrentInstance();
+                    rc.execute("PF('confirm').show()");
+
+                } else {
+
+                    RequestContext rc = RequestContext.getCurrentInstance();
+                    rc.execute("PF('erro').show()");
+
+                }
             } else {
+                this.pessoa.setSenha("");
+                this.pessoa.setSenha2("");
 
                 RequestContext rc = RequestContext.getCurrentInstance();
-                rc.execute("PF('erro').show()");
+                rc.execute("PF('diferente').show()");
 
             }
         } else {
-            this.pessoa.setSenha("");
-            this.pessoa.setSenha2("");
-            
             RequestContext rc = RequestContext.getCurrentInstance();
-            rc.execute("PF('diferente').show()");
-            
+            rc.execute("PF('vazio').show()");
         }
 
     }
@@ -76,6 +82,47 @@ public class PessoaJuridicaController implements Serializable {
 
     public void setPessoa(PessoaJuridica pessoa) {
         this.pessoa = pessoa;
+    }
+
+    private boolean campoVazio() {
+
+        if (pessoa.getRazaoSocial() == null) {
+            return true;
+        }
+        if (pessoa.getCnpj() == null) {
+            return true;
+        }
+        if (pessoa.getEmail() == null) {
+            return true;
+        }
+        if (pessoa.getTelefone() == null) {
+            return true;
+        }
+        if (pessoa.getCep() == null) {
+            return true;
+        }
+        if (pessoa.getLogradouro() == null) {
+            return true;
+        }
+        if (pessoa.getNumero() == null) {
+            return true;
+        }
+        if (pessoa.getComplemento() == null) {
+            return true;
+        }
+        if (pessoa.getBairro() == null) {
+            return true;
+        }
+        if (pessoa.getEstado() == null) {
+            return true;
+        }
+        if (pessoa.getSenha() == null) {
+            return true;
+        }
+        if (pessoa.getSenha2() == null) {
+            return true;
+        }
+        return false;
     }
 
 }
