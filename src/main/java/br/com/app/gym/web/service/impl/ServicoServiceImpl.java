@@ -4,6 +4,7 @@ import br.com.app.gym.web.model.ServicoModel;
 import br.com.app.gym.web.rest.ServicoRest;
 import br.com.app.gym.web.service.ServicoService;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -26,5 +27,12 @@ public class ServicoServiceImpl implements ServicoService, Serializable {
 
         return this.rest.listarTransacoesPorPeriodo(academiaId);
     }
+
+    @Override
+    public BigDecimal alterarServico(BigDecimal valor, Integer clienteId) {
+        
+        return this.rest.alterarServico(valor, clienteId);
+    }
+
 
 }

@@ -16,7 +16,6 @@
             </ui:define>
 
             <ui:define name="content">
-
                 <h:form id="form_dados_cadastrais">
                     <p:fieldset>
 
@@ -90,7 +89,27 @@
                                               value="OK" />
                         </p:panelGrid>
                     </p:dialog>
+                </h:form>
 
+                &nbsp;&nbsp;
+
+                <h:form id="form_dados_servico">
+                    <p:fieldset>
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">
+                                <h:outputText value="Valor do treino" />
+                            </f:facet>
+
+                            <h:outputText value="Valor atual: "/>
+                            <h:outputText value="#{perfilController.valor}" />
+
+                            <h:outputText value="Novo valor:"/>
+                            <p:inputNumber value="#{perfilController.newValue}" />
+
+                            <p:commandButton id="alterar_servico" value="Alterar" actionListener="#{perfilController.valorservico()}" update="form_dados_servico"/> 
+
+                        </p:panelGrid>
+                    </p:fieldset>
                 </h:form>
 
             </ui:define>

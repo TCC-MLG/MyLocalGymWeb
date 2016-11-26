@@ -9,16 +9,17 @@ import br.com.app.gym.web.model.ServicoModel;
 import br.com.app.gym.web.presenters.ServicoPresenter;
 import br.com.app.gym.web.rest.ServicoRest;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 
 public class ServicoRestImpl implements ServicoRest, Serializable {
 
@@ -65,6 +66,12 @@ public class ServicoRestImpl implements ServicoRest, Serializable {
 
     public void close() {
         client.close();
+    }
+
+    @Override
+    public BigDecimal alterarServico(BigDecimal valor, Integer clienteId) {
+
+        return null;
     }
 
 }
