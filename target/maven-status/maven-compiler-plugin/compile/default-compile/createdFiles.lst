@@ -47,6 +47,7 @@ br\com\app\gym\web\service\impl\LoginServiceImpl.class
 br\com\app\gym\web\utils\RequiredCheckboxValidator.class
 br\com\app\gym\web\model\CheckinDadosCliente.class
 br\com\app\gym\web\model\ServicoModel.class
+br\com\app\gym\web\presenters\SaldoAcademiaPresenter.class
 br\com\app\gym\web\rest\impl\LoginRestImpl.class
 br\com\app\gym\web\model\Faturamento.class
 br\com\app\gym\web\rest\LoginRest.class

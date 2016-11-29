@@ -26,6 +26,7 @@ C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\presen
 C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\LoginRest.java
 C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\model\Periodo.java
 C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\presenters\AlterarDadosAcademiaPresenter.java
+C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\presenters\SaldoAcademiaPresenter.java
 C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\rest\AcademiaRest.java
 C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\utils\BuscaCEP.java
 C:\workspace - Matheus\TCC\mylocalgymweb\src\main\java\br\com\app\gym\web\controllers\LoginController.java
