@@ -18,6 +18,7 @@ public class AlterarAcademiaParameter implements Serializable{
     private String bairro;
     private String cidade;
     private String estado;
+    private Integer numero;
 
     public AlterarAcademiaParameter(AlterarDadosAcademiaPresenter dadosAcademia) {
         
@@ -31,6 +32,7 @@ public class AlterarAcademiaParameter implements Serializable{
             this.bairro = dadosAcademia.getBairro();
             this.cidade = dadosAcademia.getCidade();
             this.estado = dadosAcademia.getEstado();
+            this.numero = dadosAcademia.getNumero();
         }
 
     }
@@ -105,6 +107,14 @@ public class AlterarAcademiaParameter implements Serializable{
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
 }
