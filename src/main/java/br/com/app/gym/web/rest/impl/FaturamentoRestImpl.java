@@ -61,7 +61,7 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
         return periodoParameter;
     }
 
-    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email, Integer cpf) throws ClientErrorException {
+    public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, String nome, String email, Long cpf) throws ClientErrorException {
         WebTarget resource = webTarget;
         if (start != null && !start.isEmpty()) {
             resource = resource.queryParam("start", start);
@@ -76,11 +76,11 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
             resource = resource.queryParam("email", email);
         }
         if (cpf != null) {
-            resource = resource.queryParam("cpf", email);
+            resource = resource.queryParam("cpf", cpf);
         }
         resource = resource.path(java.text.MessageFormat.format("historico/{0}", new Object[]{academiaId}));
 
-        Response response = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get();
+        Response response = resource.request(MediaType.APPLICATION_JSON).get();
 
         List<HistoricoClienteParameter> clienteParameters = response.readEntity(new GenericType<List<HistoricoClienteParameter>>() {
         });
@@ -89,7 +89,6 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
         for (HistoricoClienteParameter cliente : clienteParameters) {
 
             clientes.add(cliente.convert());
-
         }
 
         return clientes;

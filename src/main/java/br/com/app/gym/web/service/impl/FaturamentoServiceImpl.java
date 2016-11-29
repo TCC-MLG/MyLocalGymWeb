@@ -35,10 +35,13 @@ public class FaturamentoServiceImpl implements FaturamentoService, Serializable 
 
     public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, HistoricoClienteModel dadosCliente) throws ClientErrorException {
 
-        Integer cpf = dadosCliente.getCpfInput() == null ? Integer.getInteger(dadosCliente.getCpfInput().replace(".", "").replace(".", "").replace("-", "")) : null;
+        String cpfString = dadosCliente.getCpfInput();
+        
+        cpfString = !cpfString.isEmpty() ? cpfString.replace(".", "").replace("-", "") : null;
+        
+        Long cpf = cpfString != null ? Long.valueOf(cpfString) : null;
 
         return this.historicoTransacaoRest.listarHistoricoClientes(academiaId, start, end, dadosCliente.getNome(), dadosCliente.getEmail(), cpf);
-
     }
 
 }

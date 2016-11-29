@@ -6,6 +6,7 @@ import br.com.app.gym.web.parameter.CheckinParameter;
 import br.com.app.gym.web.rest.CheckinRest;
 import br.com.app.gym.web.service.CheckinService;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.ClientErrorException;
@@ -30,9 +31,9 @@ public class CheckinServiceImpl implements CheckinService, Serializable {
 
     }
     
-    public boolean liberarCliente(Integer checkinId, Integer clienteId, Integer academiaId, boolean liberado, Integer servicoId) throws ClientErrorException{
+    public boolean liberarCliente(Integer checkinId, Integer clienteId, Integer academiaId, boolean liberado, BigDecimal valorServico) throws ClientErrorException{
 
-        CheckinParameter checkinParameter = new CheckinParameter(checkinId, clienteId, academiaId, liberado, servicoId);
+        CheckinParameter checkinParameter = new CheckinParameter(checkinId, clienteId, academiaId, liberado, valorServico);
         
         return  this.checkinRest.liberarCliente(checkinParameter);
         

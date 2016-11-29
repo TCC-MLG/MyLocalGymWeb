@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class PessoaJuridica implements Serializable {
 
     private String razaoSocial;
-    private Integer cnpj;
+    private String cnpj;
     private String email;
     private String cep;
     private String telefone;
@@ -64,12 +64,15 @@ public class PessoaJuridica implements Serializable {
         this.razaoSocial = razaoSocial;
     }
 
-    public Integer getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(Integer cnpj) {
-        this.cnpj = cnpj;
+    public void setCnpj(String cnpj) {
+
+        String cnpjString = cnpj.replace(".", "").replace("/", "").replace("-", "");
+
+        this.cnpj = cnpjString;
     }
 
     public String getEmail() {

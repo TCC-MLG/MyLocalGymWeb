@@ -15,13 +15,13 @@ public class CheckinParameter implements Serializable{
     private Integer servicoId;
     private BigDecimal valorServico;
 
-    public CheckinParameter(Integer checkinId, Integer clienteId, Integer academiaId, boolean liberado, Integer servicoId) {
+    public CheckinParameter(Integer checkinId, Integer clienteId, Integer academiaId, boolean liberado, BigDecimal valorServico) {
         
         this.checkinId = checkinId;
         this.clienteId = clienteId;
         this.academiaId = academiaId;
         this.liberado = liberado;
-        this.servicoId = servicoId;
+        this.valorServico = valorServico;
         
     }
 

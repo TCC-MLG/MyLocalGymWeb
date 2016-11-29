@@ -12,7 +12,7 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>principal</from-outcome>
+            <from-outcome>go_principal</from-outcome>
             <to-view-id>/sistema/checkin.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
@@ -30,47 +30,80 @@
     <navigation-rule>
         <from-view-id>/sistema/checkin.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>go_faturamento</from-outcome>
-            <to-view-id>/sistema/faturamento/faturamento.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/sistema/checkin.xhtml</from-view-id>
-        <navigation-case>
             <from-outcome>go_historico</from-outcome>
             <to-view-id>/sistema/historico/historico.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/sistema/checkin.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>go_perfil</from-outcome>
             <to-view-id>/sistema/perfil/perfil.xhtml</to-view-id>
-            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go_faturamento</from-outcome>
+            <to-view-id>/sistema/faturamento/faturamento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
+    <navigation-rule>
+        <from-view-id>/sistema/perfil/perfil.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>go_principal</from-outcome>
+            <to-view-id>/sistema/checkin.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go_historico</from-outcome>
+            <to-view-id>/sistema/historico/historico.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go_faturamento</from-outcome>
+            <to-view-id>/sistema/faturamento/faturamento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/sistema/historico/historico.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>go_principal</from-outcome>
+            <to-view-id>/sistema/checkin.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go_perfil</from-outcome>
+            <to-view-id>/sistema/perfil/perfil.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go_faturamento</from-outcome>
+            <to-view-id>/sistema/faturamento/faturamento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/sistema/faturamento/faturamento.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>go_historico</from-outcome>
-            <to-view-id>/sistema/historico/historico.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-        
-        <navigation-case>
-            <from-outcome>principal</from-outcome>
+            <from-outcome>go_principal</from-outcome>
             <to-view-id>/sistema/checkin.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>go_perfil</from-outcome>
             <to-view-id>/sistema/perfil/perfil.xhtml</to-view-id>
-            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go_historico</from-outcome>
+            <to-view-id>/sistema/historico/historico.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sair_login</from-outcome>
+            <to-view-id>/site/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
 </faces-config>

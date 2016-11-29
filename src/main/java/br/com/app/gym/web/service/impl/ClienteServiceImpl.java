@@ -1,9 +1,12 @@
 package br.com.app.gym.web.service.impl;
 
 import br.com.app.gym.web.model.PessoaJuridica;
+import br.com.app.gym.web.parameter.AlterarAcademiaParameter;
+import br.com.app.gym.web.presenters.AlterarDadosAcademiaPresenter;
 import br.com.app.gym.web.rest.AcademiaRest;
 import br.com.app.gym.web.service.ClienteService;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,7 +20,24 @@ public class ClienteServiceImpl implements ClienteService, Serializable {
     public boolean cadastrarCliente(PessoaJuridica pessoaJuridica) {
 
         return this.academiaRest.cadastrarAcademia(pessoaJuridica.convert());
-        
+
+    }
+
+    @Override
+    public AlterarDadosAcademiaPresenter buscarDadosAcademia(Integer academiaId) {
+
+        return this.academiaRest.buscarDadosAcademia(academiaId);
+    }
+
+    @Override
+    public boolean atualizarAcademia(AlterarAcademiaParameter parameter, Integer academiaId) {
+
+        return this.academiaRest.atualizarAcademia(parameter, academiaId);
+    }
+
+    @Override
+    public boolean atualizarServico(BigDecimal newValue, Integer academiaId) {
+        return this.academiaRest.atualizarServico(newValue, academiaId);
     }
 
 }

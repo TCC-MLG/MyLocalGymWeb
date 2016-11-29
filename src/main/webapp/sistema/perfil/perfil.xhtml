@@ -16,7 +16,6 @@
             </ui:define>
 
             <ui:define name="content">
-
                 <h:form id="form_dados_cadastrais">
                     <p:fieldset>
 
@@ -24,20 +23,15 @@
 
                             <p:outputLabel value="Razão Social " for="razaoSocial" />
                             <p:inputText required="true" id="razaoSocial"
-                                         value="#{pessoaJuridicaController.pessoa.razaoSocial}" size="50" />
-
-                            <p:outputLabel value="CNPJ " for="cnpj" />
-                            <p:inputText id="cnpj"
-                                         value="#{pessoaJuridicaController.pessoa.cnpj}" maxlength="14"
-                                         size="30" />
+                                         value="#{perfilController.dadosAcademia.razaoSocial}" size="50" />
 
                             <p:outputLabel value="E-mail " for="email" />
                             <p:inputText id="email" required="false"
-                                         value="#{pessoaJuridicaController.pessoa.email}" size="40" />
+                                         value="#{perfilController.dadosAcademia.email}" size="40" />
 
                             <p:outputLabel value="Telefone " for="telefone" />
                             <p:inputText id="telefone" required="false"
-                                         value="#{pessoaJuridicaController.pessoa.telefone}" size="11" />
+                                         value="#{perfilController.dadosAcademia.telefone}" size="11" />
 
                         </p:panelGrid>
 
@@ -50,54 +44,72 @@
 
                             <p:outputLabel value="CEP " for="cep" />
                             <p:inputText required="false" id="cep"
-                                         value="#{pessoaJuridicaController.pessoa.cep}" maxlength="8"
+                                         value="#{perfilController.dadosAcademia.cep}" maxlength="8"
                                          size="8" />
 
                             <p:outputLabel value="Endereço " for="endereco" />
                             <p:inputText required="false" id="endereco"
-                                         value="#{pessoaJuridicaController.pessoa.logradouro}" size="40" />
+                                         value="#{perfilController.dadosAcademia.endereco}" size="40" />
 
                             <p:outputLabel value="Nº " for="numero" />
                             <p:inputText required="false" id="numero" maxlength="6"
-                                         value="#{pessoaJuridicaController.pessoa.numero}" size="5" />
+                                         value="#{perfilController.dadosAcademia.numero}" size="5" />
 
                             <p:outputLabel value="Complemento " for="complemento" />
                             <p:inputText id="complemento" maxlength="30" required="false"
-                                         value="#{pessoaJuridicaController.pessoa.complemento}" size="20" />
+                                         value="#{perfilController.dadosAcademia.complemento}" size="20" />
 
                             <p:outputLabel value="Bairro " for="bairro" />
                             <p:inputText required="false" id="bairro"
-                                         value="#{pessoaJuridicaController.pessoa.bairro}" size="40" />
+                                         value="#{perfilController.dadosAcademia.bairro}" size="40" />
 
                             <p:outputLabel for="cidade" value="Cidade " />
                             <p:inputText required="false" id="cidade"
-                                         value="#{pessoaJuridicaController.pessoa.cidade}" size="30" />
+                                         value="#{perfilController.dadosAcademia.cidade}" size="30" />
 
                             <p:outputLabel value="Estado " for="estado" />
                             <p:inputText required="false" id="estado"
-                                         value="#{pessoaJuridicaController.pessoa.estado}" size="20" />
+                                         value="#{perfilController.dadosAcademia.estado}" size="20" />
 
                             <p:commandButton value="Alterar"
-                                             actionListener="#{pessoaJuridicaController.cadastrar()}" update="form_dados_cadastrais" />
-
-                            <p:commandButton value="Ok" action="#{loginController.entrar}" update="form_dados_cadastrais" />
+                                             actionListener="#{perfilController.alterar()}" immediate="true" update="form_dados_cadastrais"/>
 
                         </p:panelGrid>
                     </p:fieldset>
                     &nbsp;&nbsp;
-                    <p:dialog id="nao_cadastrado" header="Error" widgetVar="erro" minHeight="40">
+                    <p:dialog id="nao_alterado" header="Error" widgetVar="erro" minHeight="40">
                         <h:outputText value="Não foi possivel realizar as alterações no seu cadastro cadastro!" />
                     </p:dialog>
 
                     <p:dialog id="sim_cadastro"  header="Sucesso!" widgetVar="confirm" minHeight="40">
                         <p:panelGrid columns="1">
-                            <h:outputText value="Seu cadastro foi realizado com sucesso, você será direcionado para tela inicial" />
+                            <h:outputText value="Alteração foi realizado com sucesso!" />
                             <h:commandButton  styleClass="btn btn-sm btn-success active offset" 
                                               style="border-top-width: 1px; margin-left: 250px; padding-left: 20px; padding-right: 20px;" 
-                                              value="OK"
-                                              action="home" />
+                                              value="OK" />
                         </p:panelGrid>
                     </p:dialog>
+                </h:form>
+
+                &nbsp;&nbsp;
+
+                <h:form id="form_dados_servico">
+                    <p:fieldset>
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">
+                                <h:outputText value="Valor do treino" />
+                            </f:facet>
+
+                            <h:outputText value="Valor atual: "/>
+                            <h:outputText value="#{perfilController.valor}" />
+
+                            <h:outputText value="Novo valor:"/>
+                            <p:inputNumber value="#{perfilController.newValue}" />
+
+                            <p:commandButton id="alterar_servico" value="Alterar" actionListener="#{perfilController.valorservico()}" update="form_dados_servico"/> 
+
+                        </p:panelGrid>
+                    </p:fieldset>
                 </h:form>
 
             </ui:define>

@@ -49,7 +49,7 @@
                                         <p:dataTable var="faturamento" value="#{faturamentoController.faturamento}" scrollable="true" scrollHeight="300">
 
                                             <f:facet name="header">
-                                                <h:outputText value="Movimento:16-09-2016" />
+                                                <h:outputText value="#{faturamentoController.titleMovimento()}" />
                                             </f:facet>
 
                                             <p:column headerText="Nome">
@@ -65,24 +65,18 @@
                                             </p:column>
 
                                         </p:dataTable>
-                                        
-                                        <p:panelGrid columns="2">
-
-                                            <h:outputText value="Total: " />
-                                            <h:outputText value="100" />
-
-                                        </p:panelGrid>
 
                                     </div>
                                 </h:form>
                             </div>
                             <div class="col2">
+
                                 <h:form id="form_resumo_periodo">
-                                    <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 176px; margin-top: 3px;">
+                                    <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 62px; margin-top: 3px;">
 
                                         <p:panelGrid columns="2">
                                             <f:facet name="header">
-                                                <h:outputText value="Periodo" />
+                                                <h:outputText value="Resumo por periodo" />
                                             </f:facet>
 
                                             <h:outputText value="Semanal:" />
