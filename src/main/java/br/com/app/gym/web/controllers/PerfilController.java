@@ -28,6 +28,8 @@ public class PerfilController implements Serializable {
 
     private BigDecimal valor;
     private BigDecimal newValue;
+    private String senha;
+    private String senha2;
 
     @PostConstruct
     public void init() {
@@ -39,9 +41,11 @@ public class PerfilController implements Serializable {
 
     public void alterar() {
 
+        boolean alterado = false;
+
         AlterarAcademiaParameter parameter = new AlterarAcademiaParameter(this.dadosAcademia);
 
-        boolean alterado = this.clienteService.atualizarAcademia(parameter, this.buscarIdSessao());
+        alterado = this.clienteService.atualizarAcademia(parameter, this.buscarIdSessao());
 
         if (alterado) {
             RequestContext rc = RequestContext.getCurrentInstance();
@@ -108,6 +112,22 @@ public class PerfilController implements Serializable {
 
     public void setNewValue(BigDecimal newValue) {
         this.newValue = newValue;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getSenha2() {
+        return senha2;
+    }
+
+    public void setSenha2(String senha2) {
+        this.senha2 = senha2;
     }
 
 }

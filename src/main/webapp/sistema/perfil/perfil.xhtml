@@ -37,6 +37,25 @@
 
                     </p:fieldset>
 
+                    <p:fieldset>
+
+                        <p:panelGrid id="panel_senha" columns="2" >
+
+                            <p:outputLabel value="Senha: " />
+                            <p:inputText required="false" id="senha11"
+                                         value="#{perfilController.senha}" 
+                                         maxlength="8"
+                                         size="8" />
+
+                            <p:outputLabel value="Repetir senha: "/>
+                            <p:inputText required="false" id="repetir"
+                                         value="#{perfilController.senha2}"
+                                         maxlength="8"
+                                         size="8"/>
+
+                        </p:panelGrid>
+                    </p:fieldset>
+
                     &nbsp;&nbsp;
                     <p:fieldset>
 
