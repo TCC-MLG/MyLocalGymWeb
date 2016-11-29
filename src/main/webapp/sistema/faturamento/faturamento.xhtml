@@ -71,6 +71,22 @@
                             </div>
                             <div class="col2">
 
+                                <h:form id="form_saldo_atual">
+                                    <div id="div_corpo_resumo" style="margin-bottom: 54px; margin-right: 0px; margin-left: 62px; margin-top: 3px;">
+
+                                        <p:panelGrid columns="2">
+                                            <f:facet name="header">
+                                                <h:outputText value="Saldo carteira" />
+                                            </f:facet>
+
+                                            <h:outputText value="Valor: " />
+                                            <h:outputText value="#{faturamentoController.saldo} "/>
+
+                                        </p:panelGrid>
+
+                                    </div>
+                                </h:form>
+
                                 <h:form id="form_resumo_periodo">
                                     <div id="div_corpo_resumo" style="margin-right: 0px; margin-left: 62px; margin-top: 3px;">
 

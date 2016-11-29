@@ -5,6 +5,7 @@ import br.com.app.gym.web.model.HistoricoClienteModel;
 import br.com.app.gym.web.parameter.FaturamentoParameter;
 import br.com.app.gym.web.parameter.HistoricoClienteParameter;
 import br.com.app.gym.web.parameter.PeriodoParameter;
+import br.com.app.gym.web.presenters.SaldoAcademiaPresenter;
 import java.util.List;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import br.com.app.gym.web.rest.FaturamentoRest;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import javax.ws.rs.core.GenericType;
@@ -48,6 +50,17 @@ public class FaturamentoRestImpl implements FaturamentoRest, Serializable {
         }
         return new ArrayList<>();
 
+    }
+
+    @Override
+    public BigDecimal buscarSaldoPorId(Integer idCliente) throws ClientErrorException {
+        WebTarget resource = client.target(BASE_URI).path("/carteira/cliente");
+        resource = resource.path(java.text.MessageFormat.format("saldo/{0}", new Object[]{idCliente}));
+        Response response = resource.request(MediaType.APPLICATION_JSON).get();
+
+        SaldoAcademiaPresenter presenter = response.readEntity(SaldoAcademiaPresenter.class);
+
+        return presenter != null ? presenter.getSaldo() : BigDecimal.ZERO;
     }
 
     @Override

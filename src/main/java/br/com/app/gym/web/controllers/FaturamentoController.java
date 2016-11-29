@@ -4,6 +4,7 @@ import br.com.app.gym.web.model.Faturamento;
 import br.com.app.gym.web.parameter.PeriodoParameter;
 import br.com.app.gym.web.service.FaturamentoService;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +33,8 @@ public class FaturamentoController implements Serializable {
     private PeriodoParameter periodoParameter;
     private List<Faturamento> faturamento;
 
+    private BigDecimal saldo;
+
     @PostConstruct
     public void init() {
 
@@ -45,6 +48,7 @@ public class FaturamentoController implements Serializable {
         this.faturamento = new ArrayList<>();
 
         this.faturamento = this.faturamentoService.listarTransacoesPorPeriodo(buscarIdSessao(), "1");
+        this.saldo = this.faturamentoService.buscarSaldoPorId(buscarIdSessao());
         this.listarFaturamento();
 
     }
@@ -69,12 +73,12 @@ public class FaturamentoController implements Serializable {
 
         return idUsuarioSession;
     }
-    
-    public String titleMovimento(){
-        
+
+    public String titleMovimento() {
+
         String data = LocalDate.now().toString();
-        
-        return "Movimento: "+data+"";
+
+        return "Movimento: " + data + "";
     }
 
     public String getCity() {
@@ -103,6 +107,14 @@ public class FaturamentoController implements Serializable {
 
     public List<Faturamento> getFaturamento() {
         return faturamento;
+    }
+
+    public BigDecimal getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(BigDecimal saldo) {
+        this.saldo = saldo;
     }
 
 }

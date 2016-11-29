@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import br.com.app.gym.web.service.FaturamentoService;
 import br.com.app.gym.web.rest.FaturamentoRest;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.ws.rs.ClientErrorException;
 
 /**
@@ -36,12 +37,18 @@ public class FaturamentoServiceImpl implements FaturamentoService, Serializable 
     public List<HistoricoClienteModel> listarHistoricoClientes(String academiaId, String start, String end, HistoricoClienteModel dadosCliente) throws ClientErrorException {
 
         String cpfString = dadosCliente.getCpfInput();
-        
+
         cpfString = !cpfString.isEmpty() ? cpfString.replace(".", "").replace("-", "") : null;
-        
+
         Long cpf = cpfString != null ? Long.valueOf(cpfString) : null;
 
         return this.historicoTransacaoRest.listarHistoricoClientes(academiaId, start, end, dadosCliente.getNome(), dadosCliente.getEmail(), cpf);
+    }
+
+    @Override
+    public BigDecimal buscarSaldoPorId(Integer idCliente) throws ClientErrorException {
+
+        return this.historicoTransacaoRest.buscarSaldoPorId(idCliente);
     }
 
 }
